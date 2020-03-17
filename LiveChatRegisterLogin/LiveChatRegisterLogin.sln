@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveChatRegisterLogin", "LiveChatRegisterLogin.csproj", "{106210EB-38C6-47A3-ABA7-96CB920A3AFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{106210EB-38C6-47A3-ABA7-96CB920A3AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106210EB-38C6-47A3-ABA7-96CB920A3AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106210EB-38C6-47A3-ABA7-96CB920A3AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106210EB-38C6-47A3-ABA7-96CB920A3AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A97D0EB1-30C9-448C-A00F-EA288C13E938}
+	EndGlobalSection
+EndGlobal
