@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LiveChatRegisterLogin.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LiveChatRegisterLogin.Controllers
@@ -11,14 +12,22 @@ namespace LiveChatRegisterLogin.Controllers
     [ApiController]
     public class PersonsController : Controller
     {
+        private readonly DataContext _context = DataContext.GetInstance();
 
         [HttpGet]
-        public ActionResult<IEnumerable<Person>> Get()
+        public IActionResult GetAllUsers()
         {
-            return new Person[] {
-            new Person(1,"Damian", "Radecki"),
-            new Person(2, "Damian", "Kurkiewicz")
-            };
+            var persons = _context.Persons.ToList();
+            return Ok(persons);
+        }
+
+        [HttpPost]
+        public IActionResult AddPerson([FromBody] Person person)
+        {
+            _context.Persons.Add(person);
+            _context.SaveChanges();
+
+            return Ok(person);
         }
 
     }
