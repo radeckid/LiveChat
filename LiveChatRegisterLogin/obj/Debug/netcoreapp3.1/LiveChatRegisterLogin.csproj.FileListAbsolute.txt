@@ -109,4 +109,8 @@ D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debu
 D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\MySqlConnector.dll
 D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\Programowanie\CSharpProjects\Live_Chat_Project\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.MvcApplicationPartsAssemblyInfo.cache

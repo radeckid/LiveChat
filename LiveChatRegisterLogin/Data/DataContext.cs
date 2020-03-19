@@ -32,7 +32,7 @@ namespace LiveChatRegisterLogin.Data
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,7 +43,7 @@ namespace LiveChatRegisterLogin.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Person>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Email).IsRequired();
