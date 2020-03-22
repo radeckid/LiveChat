@@ -1,0 +1,17 @@
+#chatsList
+{
+  float: left;
+  height: 100%;
+  width: 20%;
+  border-style: solid;
+  border-radius: 1px;
+}
+#centre
+{
+  float: right;
+  height: 100%;
+  width: 79%;
+  border-style: solid;
+  border-radius: 1px;
+  text-align: center;
+}

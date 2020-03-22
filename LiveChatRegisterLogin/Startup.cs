@@ -26,8 +26,10 @@ namespace LiveChatRegisterLogin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(option => option.UseMySql("server=localhost;uid=root;pwd=root;database=livechat"));
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +40,12 @@ namespace LiveChatRegisterLogin
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(option =>
+            {
+                option.AllowAnyOrigin();
+                option.AllowAnyMethod();
+                option.AllowAnyHeader();
+            });
             app.UseMvc();
         }
     }

@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {}
+    "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {}
   },
   "projects": {
-    "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {
+    "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
+        "projectUniqueName": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
         "projectName": "LiveChatRegisterLogin",
-        "projectPath": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
-        "packagesPath": "C:\\Users\\damia\\.nuget\\packages\\",
-        "outputPath": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\obj\\",
+        "projectPath": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
+        "packagesPath": "C:\\Users\\ditri\\.nuget\\packages\\",
+        "outputPath": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\damia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ditri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

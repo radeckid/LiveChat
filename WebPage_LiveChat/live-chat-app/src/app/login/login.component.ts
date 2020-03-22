@@ -4,28 +4,27 @@ import { HttpService } from '../services/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-Register',
-  templateUrl: './Register.component.html',
-  styleUrls: ['./Register.component.css'],
-
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
   msg: string;
 
-  constructor(private httpSerice: HttpService) { }
+  constructor(private httpService: HttpService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  addUser() {
+  getUser() {
     const user: User = {Email: this.email, Password: this.password};
-    this.httpSerice.addUser(user).subscribe(() => {
-      this.msg = 'User created';
+    this.httpService.getUser(user).subscribe(() => {
+      this.msg = 'Login successful';
     }, (error: HttpErrorResponse) => {
-      console.log('err');
+      this.msg = error.status.toString() + ' ' + error.message;
     });
   }
 }

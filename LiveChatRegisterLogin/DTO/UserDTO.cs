@@ -9,7 +9,7 @@ namespace LiveChatRegisterLogin.DTO
     public class UserDTO
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Address email is required")]
         [MaxLength(20, ErrorMessage = "Max 64")]
         [MinLength(3, ErrorMessage = "Max 3")]
         public string Email { get; set; }

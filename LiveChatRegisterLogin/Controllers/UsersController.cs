@@ -19,16 +19,17 @@ namespace LiveChatRegisterLogin.Controllers
     [ApiController]
     public class UsersController : Controller
     {
-        private readonly DataContext _context = DataContext.GetInstance();
+        private readonly DataContext _context;
         private readonly IConfiguration _config;
 
-        public UsersController(IConfiguration config)
+        public UsersController(IConfiguration config, DataContext context)
         {
+            _context = context;
             _config = config;
         }
 
-        [HttpGet("login")]
-        public async Task<IActionResult> LoginAsync([FromBody] UserDTO persondto)
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(UserDTO userDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -36,7 +37,7 @@ namespace LiveChatRegisterLogin.Controllers
             }
 
             User result = await _context.Users
-                                .Where(p => p.Email == persondto.Email.ToLower() && p.Password == persondto.Password)
+                                .Where(p => p.Email == userDTO.Email && p.Password == userDTO.Password)
                                 .FirstOrDefaultAsync()
                                 .ConfigureAwait(true);
 
@@ -70,29 +71,27 @@ namespace LiveChatRegisterLogin.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserDTO persondto)
+        public async Task<IActionResult> Register([FromBody]UserDTO userDTO)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || userDTO == null)
             {
-                return BadRequest("Bad Request");
+                return BadRequest("The body of request is not valid.");
             }
-
             bool result = await _context.Users
-                                .AnyAsync(p => p.Email == persondto.Email.ToLower())
+                                .AnyAsync(p => p.Email == userDTO.Email)
                                 .ConfigureAwait(true);
 
             if (!result)
             {
-                await _context.Users.AddAsync(new User() { Email = persondto.Email.ToLower(), Password = persondto.Password });
+                await _context.Users.AddAsync(new User() { Email = userDTO.Email, Password = userDTO.Password });
                 await _context.SaveChangesAsync().ConfigureAwait(true);
 
-                return Ok("Added");
+                return Ok();
             }
             else
             {
                 return BadRequest("User already exist");
             }
         }
-
     }
 }

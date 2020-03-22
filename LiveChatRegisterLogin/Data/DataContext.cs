@@ -36,7 +36,12 @@ namespace LiveChatRegisterLogin.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;database=livechat;user=root;password=root");
+            base.OnConfiguring(optionsBuilder);
+
+            //if(!optionsBuilder.IsConfigured)
+            //{
+            //    optionsBuilder.UseMySql("server=localhost;database=livechat;user=root;password=root");
+            //}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
