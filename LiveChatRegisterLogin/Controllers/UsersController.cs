@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,28 +15,28 @@ namespace LiveChatRegisterLogin.Controllers
 
     [Route("[controller]")]
     [ApiController]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
-        private readonly DataContext _context = DataContext.GetInstance();
+        private readonly IUserRepository _repository;
         private readonly IConfiguration _config;
 
-        public UsersController(IConfiguration config)
+        private CultureInfo cultureInfo = new CultureInfo("pl-PL", false);
+
+        public UsersController(IUserRepository repository, IConfiguration config)
         {
+            _repository = repository;
             _config = config;
         }
 
-        [HttpGet("login")]
-        public async Task<IActionResult> LoginAsync([FromBody] UserDTO persondto)
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(UserDTO userDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Bad Request");
             }
 
-            User result = await _context.Users
-                                .Where(p => p.Email == persondto.Email.ToLower() && p.Password == persondto.Password)
-                                .FirstOrDefaultAsync()
-                                .ConfigureAwait(true);
+            var result = await _repository.Login(userDTO.Email.ToLower(cultureInfo), userDTO.Password).ConfigureAwait(true);
 
             if (result == null)
             {
@@ -70,29 +68,29 @@ namespace LiveChatRegisterLogin.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserDTO persondto)
+        public async Task<IActionResult> RegisterAsync([FromBody]UserDTO userDTO)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || userDTO == null)
             {
-                return BadRequest("Bad Request");
+                return BadRequest("The body of request is not valid");
             }
 
-            bool result = await _context.Users
-                                .AnyAsync(p => p.Email == persondto.Email.ToLower())
-                                .ConfigureAwait(true);
+            string email = userDTO.Email.ToLower(cultureInfo);
 
-            if (!result)
+            if (await _repository.UserExists(email).ConfigureAwait(true))
             {
-                await _context.Users.AddAsync(new User() { Email = persondto.Email.ToLower(), Password = persondto.Password });
-                await _context.SaveChangesAsync().ConfigureAwait(true);
+                return BadRequest("User already exists");
+            }
 
-                return Ok("Added");
-            }
-            else
+            var usertoBeCreated = new User()
             {
-                return BadRequest("User already exist");
-            }
+                Email = email.ToLower(cultureInfo)
+            };
+
+            var newUser = await _repository.Register(usertoBeCreated, userDTO.Password).ConfigureAwait(true);
+
+            //201 because its 'created' status
+            return StatusCode(201);
         }
-
     }
 }
