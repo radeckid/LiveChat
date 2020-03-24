@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {}
+    "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {}
   },
   "projects": {
-    "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {
+    "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
+        "projectUniqueName": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
         "projectName": "LiveChatRegisterLogin",
-        "projectPath": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
-        "packagesPath": "C:\\Users\\ditri\\.nuget\\packages\\",
-        "outputPath": "d:\\Projekty\\C#\\Projekt\\LiveChat\\LiveChatRegisterLogin\\obj\\",
+        "projectPath": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\LiveChatRegisterLogin.csproj",
+        "packagesPath": "C:\\Users\\damia\\.nuget\\packages\\",
+        "outputPath": "D:\\Programowanie\\CSharpProjects\\Live_Chat_Project\\LiveChatRegisterLogin\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ditri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\damia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +41,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "Microsoft.CodeAnalysis.FxCopAnalyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

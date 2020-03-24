@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,14 +15,16 @@ namespace LiveChatRegisterLogin.Controllers
 
     [Route("[controller]")]
     [ApiController]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IUserRepository _repository;
         private readonly IConfiguration _config;
 
-        public UsersController(IConfiguration config, DataContext context)
+        private CultureInfo cultureInfo = new CultureInfo("pl-PL", false);
+
+        public UsersController(IUserRepository repository, IConfiguration config)
         {
-            _context = context;
+            _repository = repository;
             _config = config;
         }
 
@@ -36,10 +36,7 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Bad Request");
             }
 
-            User result = await _context.Users
-                                .Where(p => p.Email == userDTO.Email && p.Password == userDTO.Password)
-                                .FirstOrDefaultAsync()
-                                .ConfigureAwait(true);
+            var result = await _repository.Login(userDTO.Email.ToLower(cultureInfo), userDTO.Password).ConfigureAwait(true);
 
             if (result == null)
             {
@@ -71,27 +68,29 @@ namespace LiveChatRegisterLogin.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]UserDTO userDTO)
+        public async Task<IActionResult> RegisterAsync([FromBody]UserDTO userDTO)
         {
             if (!ModelState.IsValid || userDTO == null)
             {
-                return BadRequest("The body of request is not valid.");
+                return BadRequest("The body of request is not valid");
             }
-            bool result = await _context.Users
-                                .AnyAsync(p => p.Email == userDTO.Email)
-                                .ConfigureAwait(true);
 
-            if (!result)
-            {
-                await _context.Users.AddAsync(new User() { Email = userDTO.Email, Password = userDTO.Password });
-                await _context.SaveChangesAsync().ConfigureAwait(true);
+            string email = userDTO.Email.ToLower(cultureInfo);
 
-                return Ok();
-            }
-            else
+            if (await _repository.UserExists(email).ConfigureAwait(true))
             {
-                return BadRequest("User already exist");
+                return BadRequest("User already exists");
             }
+
+            var usertoBeCreated = new User()
+            {
+                Email = email.ToLower(cultureInfo)
+            };
+
+            var newUser = await _repository.Register(usertoBeCreated, userDTO.Password).ConfigureAwait(true);
+
+            //201 because its 'created' status
+            return StatusCode(201);
         }
     }
 }
