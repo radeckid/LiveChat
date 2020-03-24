@@ -19,4 +19,6 @@ export class HttpService {
   addUser(user: User): Observable<string> {
     return this.httpClient.post<string>(this.userUrl + 'register', user);
   }
+
+  getAllFriend(user: User, token: string)
 }

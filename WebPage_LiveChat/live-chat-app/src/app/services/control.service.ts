@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { HttpService } from './http.service';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +9,20 @@ import { HttpService } from './http.service';
 export class ControlService {
 
   isUserLogged: Subject<boolean> = new Subject<boolean>();
+  user: User;
   token: string;
-
-  constructor() {
-    this.token
-   }
 
   setToken(token: string) {
     if (!this.isNullOrWhitespace(token)) {
       this.token = token;
       this.setLogged();
     } else {
-      this.token = '';
+      console.log('error with token');
     }
+  }
+
+  setUser(user: User) {
+    this.user = user;
   }
 
   setLogged() {

@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     const user: User = {Email: this.email, Password: this.password};
     this.httpService.getUser(user).subscribe(response => {
       this.controlService.setToken(response);
+      this.controlService.setUser(user);
       console.log(response);
     }, (error: HttpErrorResponse) => {
       this.msg = error.status.toString() + ' ' + error.message;
