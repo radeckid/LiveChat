@@ -13,11 +13,11 @@ export class ControlService {
   token: string;
 
   setToken(token: string) {
-    if (!this.isNullOrWhitespace(token)) {
+    if (this.isNullOrWhitespace(token)) {
+      console.log('error with token');
+    } else {
       this.token = token;
       this.setLogged();
-    } else {
-      console.log('error with token');
     }
   }
 
@@ -34,6 +34,6 @@ export class ControlService {
   }
 
   private isNullOrWhitespace(str: string): boolean {
-    return str != null || str.length == 0;
+    return str == null || str.length == 0;
   }
 }

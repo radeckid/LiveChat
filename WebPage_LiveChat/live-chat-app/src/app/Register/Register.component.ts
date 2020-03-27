@@ -1,5 +1,5 @@
-import { Component, OnInit, ErrorHandler } from '@angular/core';
-import { User } from '../user';
+import { Component, OnInit } from '@angular/core';
+import { UserDTO } from '../userDTO';
 import { HttpService } from '../services/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -21,10 +21,13 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser() {
-    const user: User = {Email: this.email, Password: this.password};
+    const user: UserDTO = {Email: this.email, Password: this.password};
     this.httpSerice.addUser(user).subscribe(() => {
+      this.email = '';
+      this.password = '';
       this.msg = 'User created';
     }, (error: HttpErrorResponse) => {
+      this.msg = error.message;
       console.log('err');
     });
   }

@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   getUser() {
     const user: User = {Email: this.email, Password: this.password};
     this.httpService.getUser(user).subscribe(response => {
+      this.email = '';
+      this.password = '';
       this.controlService.setToken(response);
       this.controlService.setUser(user);
       console.log(response);

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using LiveChatRegisterLogin.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LiveChatRegisterLogin.Data
@@ -10,6 +9,8 @@ namespace LiveChatRegisterLogin.Data
 
         Task<User> Login(string email, string password);
         Task<User> Register(User user, string password);
-        Task<bool> UserExists(string email);
+        Task<ICollection<User>> GetAllFriend(int userId);
+        Task<bool> UserExists(int userId);
+        Task<bool> IsRelation(int requesterId, int newFriendId)
     }
 }

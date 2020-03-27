@@ -1,4 +1,5 @@
 export interface User {
-    Email: string;
-    Password: string;
+  Id: number;
+  Email: string;
+  Friends?: Array<User>;
 }

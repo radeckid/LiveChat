@@ -1,6 +1,8 @@
 <div id="chat">
-  Here you can see type
+  <div id="load" (click)='loadPrevious()'> Load previous </div>
+  <div class="message" *ngFor="let message of chat.get()"> {{ message.content }}</div>
 </div>
 <div id="textInput">
-  Here you can type text
+  Input: <input type="text" id="inputText" [(ngModel)]="input" />
+  <input type="button" (click)='send()' value="Send"/>
 </div>

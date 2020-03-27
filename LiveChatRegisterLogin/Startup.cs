@@ -1,4 +1,5 @@
 using LiveChatRegisterLogin.Data;
+using LiveChatRegisterLogin.HubConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,11 +24,24 @@ namespace LiveChatRegisterLogin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(option => option.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc(option => option.EnableEndpointRouting = false);
-            services.AddControllers();
-            services.AddCors();
+            services.AddDbContext<DataContext>(option => 
+            {
+                option.UseLazyLoadingProxies();
+                option.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:4200")
+                .AllowCredentials();
+            }));
+
+            services.AddSignalR();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -39,6 +53,8 @@ namespace LiveChatRegisterLogin
                         ValidateAudience = false
                     };
                 });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,16 +65,19 @@ namespace LiveChatRegisterLogin
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(option =>
-            {
-                option.AllowAnyOrigin();
-                option.AllowAnyMethod();
-                option.AllowAnyHeader();
-            });
+            app.UseRouting();
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<MessagesHub>("/chart");
+            });
         }
     }
 }

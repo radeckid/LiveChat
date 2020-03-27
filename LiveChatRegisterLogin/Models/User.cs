@@ -1,22 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
-namespace LiveChatRegisterLogin
+namespace LiveChatRegisterLogin.Models
 {
     public class User
     {
         [Key]
-        public int Id {get; set;}
+        public int Id { get; set; }
 
         [Required]
         public string Email { get; set; }
 
-        public byte[] PasswordHash { get; set; }
+        [JsonIgnore]
+        public virtual Password Password { get; set; }
 
-        public byte[] PasswordSalt { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Message> SentMessages { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Relation> Friends { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
