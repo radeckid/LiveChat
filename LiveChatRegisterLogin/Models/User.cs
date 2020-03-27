@@ -26,6 +26,9 @@ namespace LiveChatRegisterLogin.Models
         public virtual ICollection<Relation> Friends { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<Notification> NotificationsSent { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Notification> NotificationsReceived { get; set; }
     }
 }

@@ -269,3 +269,4 @@ D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Ne
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Json.Net.dll
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.csproj.CoreCompileInputs.cache
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.MvcApplicationPartsAssemblyInfo.cache
+D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.csprojAssemblyReference.cache

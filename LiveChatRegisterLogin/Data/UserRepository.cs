@@ -15,9 +15,11 @@ namespace LiveChatRegisterLogin.Data
 
         public UserRepository(DataContext context)
         {
-            _context = context;
-
-            context.Database.EnsureCreated();
+            if(context != null)
+            {
+                _context = context;
+                _context.Database.EnsureCreated();
+            }
         }
 
         public async Task<User> Login(string email, string password)
@@ -34,6 +36,7 @@ namespace LiveChatRegisterLogin.Data
             return user;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>")]
         public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
@@ -46,13 +49,13 @@ namespace LiveChatRegisterLogin.Data
                 PasswordSalt = passwordSalt
             };
 
-            await _context.Users.AddAsync(user);
+            await _context.Users.AddAsync(user).ConfigureAwait(true);
             await _context.SaveChangesAsync().ConfigureAwait(true);
 
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetAllFriend(int userId)
+        public async Task<ICollection<User>> GetAllFriend(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId).ConfigureAwait(true);
 
@@ -72,20 +75,13 @@ namespace LiveChatRegisterLogin.Data
             return friends;
         }
 
-        public async Task<bool> UserExists(int userId)
+        public async Task<bool> UserExists(string email)
         {
-            if (await _context.Users.AnyAsync(x => x.Id == userId).ConfigureAwait(true))
+            if (await _context.Users.AnyAsync(x => x.Email == email).ConfigureAwait(true))
                 return true;
 
             return false;
-        }
-
-        public async Task<bool> IsRelation(int requesterId, int newFriendId)
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == requesterId);
-
-            return user.Friends.Any(x => x.FriendId == newFriendId);
-        }
+        }  
 
         private void CreatePasswordHashSalt(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
@@ -109,11 +105,6 @@ namespace LiveChatRegisterLogin.Data
                 }
                 return true;
             }
-        }
-
-        private async Task<IEnumerable<User>> ProcessRelations(int[] friendId)
-        {
-            
         }
     }
 

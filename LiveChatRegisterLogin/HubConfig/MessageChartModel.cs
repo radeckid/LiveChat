@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LiveChatRegisterLogin.HubConfig
 {
-    public class ChartModel
+    public class MessageChartModel
     {
         public int ReceiverId { get; set; }
     }

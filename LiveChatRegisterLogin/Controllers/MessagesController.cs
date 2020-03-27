@@ -71,8 +71,8 @@ namespace LiveChatRegisterLogin.Controllers
             await _context.SaveChangesAsync().ConfigureAwait(true);
 
 
-            object[] param = { new ChartModel { ReceiverId = receiverId } };
-            _ = _hub.Clients.All.SendCoreAsync("transferchartdata", param).ConfigureAwait(true);
+            object[] param = { new MessageChartModel { ReceiverId = receiverId } };
+            _ = _hub.Clients.All.SendCoreAsync("transfermesasges", param).ConfigureAwait(true);
 
             return Ok(message);
         }

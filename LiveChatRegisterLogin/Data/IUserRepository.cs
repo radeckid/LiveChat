@@ -10,7 +10,6 @@ namespace LiveChatRegisterLogin.Data
         Task<User> Login(string email, string password);
         Task<User> Register(User user, string password);
         Task<ICollection<User>> GetAllFriend(int userId);
-        Task<bool> UserExists(int userId);
-        Task<bool> IsRelation(int requesterId, int newFriendId)
+        Task<bool> UserExists(string email);
     }
 }

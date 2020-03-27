@@ -1,44 +1,45 @@
 import { Injectable } from '@angular/core';
-import * as signalR from "@aspnet/signalr";
-import { ChartModel } from '../chart-model';
+import * as signalR from '@aspnet/signalr';
 import { Subject, Observable } from 'rxjs';
 import { ControlService } from './control.service';
+import { MessageChartModel } from '../message-chart-model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SignalRService {
+export class MessageSignalRService {
 
-  data: Subject<Array<ChartModel>>;
+  data: Subject<Array<MessageChartModel>>;
   private hubConnection: signalR.HubConnection;
 
   constructor(private controlService: ControlService) {
-    this.data = new Subject<Array<ChartModel>>();
+    this.data = new Subject<Array<MessageChartModel>>();
 
    }
 
    startConnection() {
      this.hubConnection = new signalR.HubConnectionBuilder()
 
-     .withUrl('http://localhost:53064/chart')
+     .withUrl('http://localhost:53064/messagechart')
      .build();
 
      this.hubConnection
      .start()
      .then(() => console.log('Connection started'))
-     .catch(err => console.log('Error while starting connection: '+ err));
+     .catch(err => console.log('Error while starting connection: ' + err));
    }
 
    addTransferChartDataListener() {
      console.log('listen');
-     this.hubConnection.on('transferchartdata', (data) => {
-       if(this.controlService.user.)
-      this.data.next(data);
-      console.log(data);
+     this.hubConnection.on('transfermesasges', (data) => {
+       if (this.controlService.user.Id === data.ReceiverId) {
+        this.data.next(data);
+        console.log(data);
+       }
      });
    }
 
-   getDate(): Observable<Array<ChartModel>> {
+   getDate(): Observable<Array<MessageChartModel>> {
      return this.data.asObservable();
    }
 }

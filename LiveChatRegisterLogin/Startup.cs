@@ -31,6 +31,7 @@ namespace LiveChatRegisterLogin
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
@@ -76,7 +77,8 @@ namespace LiveChatRegisterLogin
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<MessagesHub>("/chart");
+                endpoints.MapHub<MessagesHub>("/messagechart");
+                endpoints.MapHub<NotificationHub>("/notificationchart");
             });
         }
     }

@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
@@ -17,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace LiveChatRegisterLogin.Controllers
 {
 
-    [Route("[controller]")]
+    
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -35,12 +34,12 @@ namespace LiveChatRegisterLogin.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync(UserDTO userDTO)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || userDTO == null)
             {
                 return BadRequest("Bad Request");
             }
 
-            var result = await _repository.Login(userDTO.Email.ToLower(cultureInfo), userDTO.Password).ConfigureAwait(true);
+            User result = await _repository.Login(userDTO.Email.ToLower(cultureInfo), userDTO.Password).ConfigureAwait(true);
 
             if (result == null)
             {
@@ -97,33 +96,13 @@ namespace LiveChatRegisterLogin.Controllers
                 Email = email,
                 ReceivedMessages = new List<Message>(),
                 SentMessages = new List<Message>(),
-                FirstFriends = new List<Relation>(),
-                SecondFriends = new List<Relation>()
+                Friends = new List<Relation>(),
             };
 
             var newUser = await _repository.Register(usertoBeCreated, userDTO.Password).ConfigureAwait(true);
 
             //201 because its 'created' status
             return StatusCode(201);
-        }
-
-        [HttpPost("friends")]
-        public async Task<IActionResult> AddRelation(int userId, int newFriendId)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest("The body of request is not valid");
-            }
-
-            if (! await _repository.UserExists(userId).ConfigureAwait(true) || ! await _repository.UserExists(newFriendId).ConfigureAwait(true))
-            {
-                return BadRequest("Cannot find any user.");
-            }
-
-            if(_repository.IsRelation(userId, newFriendId))
-            {
-                return BadRequest("Users have a relation.");
-            }
         }
 
         [HttpGet("friends/{userId}")]
@@ -134,7 +113,7 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("The body of request is not valid");
             }
 
-            var users = await _repository.GetAllFriend(userId);
+            var users = await _repository.GetAllFriend(userId).ConfigureAwait(true);
 
             if(users == null)
             {
