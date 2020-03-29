@@ -3,7 +3,7 @@
     <app-list-chats></app-list-chats>
   </div>
   <div id="centre" >
-    <ng-container *ngIf="isLogged;else chat">
+    <ng-container *ngIf="!isLogged;else chat">
       <app-Register></app-Register>
       <app-login></app-login>
     </ng-container>

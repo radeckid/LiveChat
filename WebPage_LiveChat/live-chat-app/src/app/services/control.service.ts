@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { HttpService } from './http.service';
 import { User } from '../user';
 
@@ -9,20 +9,20 @@ import { User } from '../user';
 export class ControlService {
 
   isUserLogged: Subject<boolean> = new Subject<boolean>();
-  user: User;
-  token: string;
+  user: BehaviorSubject<User> = new BehaviorSubject<User>({email: '', id: 1});
+  receiver: User = {email: 'test2@wp.pl', id: 2};
 
-  setToken(token: string) {
-    if (this.isNullOrWhitespace(token)) {
-      console.log('error with token');
-    } else {
-      this.token = token;
-      this.setLogged();
-    }
+  public getReceiver(): User {
+    return this.receiver;
   }
 
   setUser(user: User) {
-    this.user = user;
+    this.user.next(user);
+    this.setLogged();
+  }
+
+  getUser(): Observable<User> {
+    return this.user.asObservable();
   }
 
   setLogged() {
@@ -31,9 +31,5 @@ export class ControlService {
 
   getLogged(): Observable<boolean> {
     return this.isUserLogged.asObservable();
-  }
-
-  private isNullOrWhitespace(str: string): boolean {
-    return str == null || str.length == 0;
   }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LiveChatRegisterLogin.DTO
 {
     public class NotificationDTO
     {
-        public int Id { get; set; }
+        [Required]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "'0' Can not be used")]
+        public string Id { get; set; }
         
+        [Required]
         public bool Action { get; set; }
     }
 }

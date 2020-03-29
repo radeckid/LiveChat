@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component';
 import { ListChatsComponent } from './list-chats/list-chats.component';
 import { ChartsModule } from 'ng2-charts';
+import { HttpService } from './services/http.service';
+import { ControlService } from './services/control.service';
+import { MessageSignalRService } from './services/message-signal-r.service';
 
 @NgModule({
    declarations: [
@@ -23,7 +26,7 @@ import { ChartsModule } from 'ng2-charts';
       FormsModule,
       ChartsModule
    ],
-   providers: [],
+   providers: [HttpService, ControlService, MessageSignalRService],
    bootstrap: [
       AppComponent
    ]

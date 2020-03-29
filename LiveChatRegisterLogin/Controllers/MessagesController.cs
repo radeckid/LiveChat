@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LiveChatRegisterLogin.Controllers
 {
-
     [Authorize]
     [Route("[controller]")]
     [ApiController]
@@ -20,11 +20,13 @@ namespace LiveChatRegisterLogin.Controllers
 
         private readonly DataContext _context;
         private IHubContext<MessagesHub> _hub;
+        private IUserRepository _repository;
 
-        public MessagesController(DataContext context, IHubContext<MessagesHub> hub)
+        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IUserRepository repository)
         {
             _context = context;
             _hub = hub;
+            _repository = repository;
         }
 
         [HttpPost("post")]
@@ -57,6 +59,12 @@ namespace LiveChatRegisterLogin.Controllers
             if(sender == null || receiver == null)
             {
                 return BadRequest("One of the users doesn't exist");
+            }
+
+            if(!sender.Friends.Any(x => x.FriendId == receiver.Id))
+            {
+                string errorMessage = string.Concat("User ", receiver.Email, " is not your friend");
+                return BadRequest(errorMessage);
             }
 
             var addMessage = new Message

@@ -15,8 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LiveChatRegisterLogin.Controllers
 {
-
-    
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {

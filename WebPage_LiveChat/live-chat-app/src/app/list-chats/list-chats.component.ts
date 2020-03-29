@@ -12,13 +12,18 @@ export class ListChatsComponent implements OnInit {
 
   isLogged: boolean;
   friendList: Array<User>;
+  user: User;
 
-  constructor(private controlService: ControlService, private httpService: HttpService) { }
+  constructor(private controlService: ControlService, private httpService: HttpService) {
+    this.controlService.getUser().subscribe(user => {
+      this.user = user;
+    });
+   }
 
   ngOnInit(): void {
     this.controlService.getLogged().subscribe( isLogged => {
-      if(isLogged) {
-        this.friendList = this.httpService.getAllFriend(this.controlService.user, this.controlService.token);
+      if (isLogged) {
+        this.friendList = this.httpService.getAllFriend(this.user, this.httpService.token);
       }
     });
   }

@@ -1,8 +1,8 @@
-import { Component, OnInit, ErrorHandler } from '@angular/core';
-import { User } from '../user';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ControlService } from '../services/control.service';
+import { UserDTO } from '../userDTO';
 
 @Component({
   selector: 'app-login',
@@ -21,13 +21,12 @@ export class LoginComponent implements OnInit {
   }
 
   getUser() {
-    const user: User = {Email: this.email, Password: this.password};
+    const user: UserDTO = {Email: this.email, Password: this.password};
     this.httpService.getUser(user).subscribe(response => {
       this.email = '';
       this.password = '';
-      this.controlService.setToken(response);
-      this.controlService.setUser(user);
-      console.log(response);
+      this.httpService.setToken(response.token);
+      this.controlService.setUser(response.user);
     }, (error: HttpErrorResponse) => {
       this.msg = error.status.toString() + ' ' + error.message;
     });

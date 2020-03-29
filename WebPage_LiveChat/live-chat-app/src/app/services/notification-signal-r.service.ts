@@ -3,6 +3,7 @@ import { NotificationChartModel } from '../notification-chart-model';
 import { Subject, Observable } from 'rxjs';
 import { ControlService } from './control.service';
 import * as signalR from '@aspnet/signalr';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,13 @@ export class NotificationSignalRService {
 
   data: Subject<Array<NotificationChartModel>>;
   private hubConnection: signalR.HubConnection;
+  user: User;
 
   constructor(private controlService: ControlService) {
     this.data = new Subject<Array<NotificationChartModel>>();
-
+    this.controlService.getUser().subscribe(user => {
+      this.user = user;
+    });
    }
 
    startConnection() {
@@ -32,7 +36,7 @@ export class NotificationSignalRService {
    addTransferChartDataListener() {
      console.log('listen');
      this.hubConnection.on('transfernotifications', (data) => {
-       if (this.controlService.user.Id === data.ReceiverId) {
+       if (this.user.id === data.SenderId) {
         this.data.next(data);
         console.log(data);
        }

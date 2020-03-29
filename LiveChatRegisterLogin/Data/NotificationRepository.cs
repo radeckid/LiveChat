@@ -1,7 +1,7 @@
 ﻿using LiveChatRegisterLogin.DTO;
 using LiveChatRegisterLogin.Models;
 using System;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +13,11 @@ namespace LiveChatRegisterLogin.Data
 
         public NotificationRepository(DataContext context)
         {
-            _context = context;
+            if (context != null)
+            {
+                _context = context;
+                _context.Database.EnsureCreated();
+            }
         }
 
         public async Task<Notification> AddInvitation(int requesterId, int newFriendId)
@@ -43,15 +47,15 @@ namespace LiveChatRegisterLogin.Data
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>")]
-        public async Task Process(NotificationDTO notificationDTO)
+        public async Task Process(int notificationid, bool isNotificationAccepted)
         {
-            Notification notification = await _context.Notifications.FirstOrDefaultAsync(x => x.Id == notificationDTO.Id).ConfigureAwait(true);
+            Notification notification = await _context.Notifications.FirstOrDefaultAsync(x => x.Id == notificationid).ConfigureAwait(true);
             var notificationType = notification.Type;
 
             switch(notificationType)
             {
                 case Types.NotificationType.Invitation:
-                    if(notificationDTO.Action)
+                    if(isNotificationAccepted)
                     {
                         AddFriend(notification);
                     }
