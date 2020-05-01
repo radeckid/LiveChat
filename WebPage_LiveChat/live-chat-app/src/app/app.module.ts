@@ -11,6 +11,8 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpService } from './services/http.service';
 import { ControlService } from './services/control.service';
 import { MessageSignalRService } from './services/message-signal-r.service';
+import { NotificationComponent } from './notification/notification.component';
+import { SearchingUserComboBoxComponent } from './searching-user-combo-box/searching-user-combo-box.component';
 
 @NgModule({
    declarations: [
@@ -18,7 +20,9 @@ import { MessageSignalRService } from './services/message-signal-r.service';
       RegisterComponent,
       LoginComponent,
       ChatComponent,
-      ListChatsComponent
+      ListChatsComponent,
+      NotificationComponent,
+      SearchingUserComboBoxComponent,
    ],
    imports: [
       BrowserModule,
@@ -26,7 +30,7 @@ import { MessageSignalRService } from './services/message-signal-r.service';
       FormsModule,
       ChartsModule
    ],
-   providers: [HttpService, ControlService, MessageSignalRService],
+   providers: [HttpService, ControlService],
    bootstrap: [
       AppComponent
    ]

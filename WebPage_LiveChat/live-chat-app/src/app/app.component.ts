@@ -3,25 +3,29 @@ import { ControlService } from './services/control.service';
 import { MessageSignalRService } from './services/message-signal-r.service';
 import { NotificationSignalRService } from './services/notification-signal-r.service';
 import { User } from './user';
+import { ConnectionSignalRService } from './connection-signal-r.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: []
+  providers: [MessageSignalRService, ConnectionSignalRService]
 })
 export class AppComponent implements OnInit {
 
   isLogged: boolean;
   user: User;
 
-  constructor(private controlService: ControlService, private messageSignalRService: MessageSignalRService,
-              private notificationSignalRService: NotificationSignalRService) { }
+  constructor(private controlService: ControlService, private messageSignalRService: MessageSignalRService, private notificationSignalRService: NotificationSignalRService) { }
 
   ngOnInit(): void {
     this.controlService.getLogged().subscribe( isLogged => {
       this.isLogged = isLogged;
       console.log('isLogged received status');
+    });
+
+    this.controlService.getUser().subscribe(user => {
+      this.user = user;
     });
 
     this.messageSignalRService.startConnection();
@@ -30,5 +34,4 @@ export class AppComponent implements OnInit {
     this.notificationSignalRService.startConnection();
     this.notificationSignalRService.addTransferChartDataListener();
   }
-
 }

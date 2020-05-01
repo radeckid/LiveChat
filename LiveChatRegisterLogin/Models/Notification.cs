@@ -1,23 +1,24 @@
 ﻿using LiveChatRegisterLogin.Types;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LiveChatRegisterLogin.Models
 {
+    [Serializable]
     public class Notification
     {
         [Key]
         public int Id { get; set; }
 
         [ForeignKey("Receiver")]
+        [JsonIgnore]
         public int ReceiverId { get; set; }
         public virtual User Receiver { get; set; }
 
         [ForeignKey("Sender")]
+        [JsonIgnore]
         public int SenderId { get; set; }
         public virtual User Sender { get; set; }
 

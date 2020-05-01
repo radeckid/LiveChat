@@ -1,3 +1,3 @@
 export interface MessageChartModel {
-  receiverId: number;
+  chatId: number;
 }

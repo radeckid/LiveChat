@@ -24,5 +24,15 @@
 .message {
   height: 10%;
   width: 10%;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+#alert {
+  position: absolute;
+  top: 17%;
+  border: 3px solid #BADA55;
+  left: 45%;
+  text-align: center;
+  height: 200px;
+  width: 200px;
 }

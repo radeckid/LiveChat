@@ -1,5 +1,6 @@
 <ul>
-  <li *ngFor="let friend of friendList">
-    {{ friend.Email }}
+  <li *ngFor="let chat of chats">
+    <input type="button" (click)="setChat(chat)" value="{{ chat.name }}" />
+    <input type="button" (click)="deleteChat(chat)" value="Delete" />
   </li>
 </ul>

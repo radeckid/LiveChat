@@ -8937,7 +8937,8 @@
       "Microsoft.IdentityModel.Tokens >= 5.6.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
       "Pomelo.EntityFrameworkCore.MySql >= 3.1.1",
-      "System.IdentityModel.Tokens.Jwt >= 5.6.0"
+      "System.IdentityModel.Tokens.Jwt >= 5.6.0",
+      "System.Threading.Tasks >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -9028,6 +9029,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[5.6.0, )"
+          },
+          "System.Threading.Tasks": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

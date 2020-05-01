@@ -1,0 +1,27 @@
+<ul>
+  <li *ngFor="let notification of notifications">
+    <div [ngSwitch]="notification.type" class="notification">
+      <div *ngSwitchCase="notificationType.Invitation">
+        <h1>Invitation</h1>
+        <p>{{ notification.desc }}</p>
+        <p>{{ notification.extraData }}</p>
+        <input type="button" (click)="action(notificationType.Invitation, true, notification.id)" value="Yes" />
+        <input type="button" (click)="action(notificationType.Invitation, false, notification.id)" value="No" />
+      </div>
+      <div *ngSwitchCase="notificationType.RelationDeletion">
+        <h1>Invitation</h1>
+        <p>User {{ notification.senderEmail }} deleted you from friends.</p>
+        <p>Reason: {{ notification.desc }}</p>
+        <input type="button" (click)="action(notificationType.RelationDeletion, true, notification.id)" value="Yes" />
+      </div>
+      <div *ngSwitchCase="notificationType.Information">
+        <h1>Invitation</h1>
+        <p>{{ notification.desc }}</p>
+        <p>{{ notification.extraData }}</p>
+        <input type="button" (click)="action(notificationType.Information, true, notification.id)" value="Yes" />
+      </div>
+    </div>
+    <div >
+    </div>
+  </li>
+</ul>

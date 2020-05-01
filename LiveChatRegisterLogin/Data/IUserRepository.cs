@@ -11,5 +11,7 @@ namespace LiveChatRegisterLogin.Data
         Task<User> Register(User user, string password);
         Task<ICollection<User>> GetAllFriend(int userId);
         Task<bool> UserExists(string email);
+        Task<IEnumerable<User>> GetAll();
+        Task<bool> IsFriend(int userId, int friendId);
     }
 }

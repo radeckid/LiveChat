@@ -12,6 +12,8 @@ namespace LiveChatRegisterLogin.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Relation> Friends { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<ChatMembership> ChatMemberships { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,18 +22,7 @@ namespace LiveChatRegisterLogin.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Message>()
-                .HasOne(t => t.Sender)
-                .WithMany(m => m.SentMessages)
-                .HasForeignKey(p => p.SenderId);
-
-            modelBuilder.Entity<Message>()
-                .HasOne(t => t.Receiver)
-                .WithMany(m => m.ReceivedMessages)
-                .HasForeignKey(p => p.ReceiverId);
 
             modelBuilder.Entity<Notification>()
                 .HasOne(t => t.Sender)

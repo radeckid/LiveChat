@@ -13,7 +13,7 @@ namespace LiveChatRegisterLogin.DTO
         [Required]
         [MinLength(1, ErrorMessage = "Min 1")]
         [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "'0' Can not be used")]
-        public string ReceiverId { get; set; }
+        public string ChatId { get; set; }
 
         [Required]
         [DataType(DataType.DateTime, ErrorMessage = "Wrong DateTime format")]

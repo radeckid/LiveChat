@@ -6,6 +6,8 @@ import { MessageSignalRService } from '../services/message-signal-r.service';
 import { ControlService } from '../services/control.service';
 import { HttpService } from '../services/http.service';
 import { User } from '../user';
+import { ThemeService } from 'ng2-charts';
+import { Chat } from '../chat';
 
 @Component({
   selector: 'app-chat',
@@ -16,15 +18,33 @@ export class ChatComponent implements OnInit {
 
   user: User;
   input: string;
-  chat: Collection<Message>;
+  chat: Chat;
+  messages: Array<Message>;
+  isRefreshRequired: boolean;
+  isAlert: boolean;
 
   // tslint:disable-next-line: max-line-length
   constructor(private messageSignalRService: MessageSignalRService, private controlService: ControlService, private httpService: HttpService) {
-    this.chat = new Collection<Message>();
-    console.log(this.user);
     this.controlService.getUser().subscribe(user => {
       this.user = user;
     });
+
+    this.messages = new Array<Message>();
+
+    this.controlService.getChat().subscribe(chat => {
+      this.chat = chat;
+      this.httpService.getAllMessages(this.user.id, this.chat.id).subscribe(messages => {
+        this.messages = messages;
+      }, err => {
+        this.isAlert = true;
+      });
+    });
+
+    this.controlService.getRefreshStatus().subscribe(number => {
+        this.httpService.getAllMessages(this.user.id, this.chat.id).subscribe(messages => {
+            this.messages = messages;
+        });
+      });
   }
 
   ngOnInit(): void {
@@ -32,15 +52,19 @@ export class ChatComponent implements OnInit {
 
   send() {
     const message: MessageDTO = {
-      SenderId: this.user.id,
-      ReceiverId: this.controlService.getReceiver().id,
-      Date: new Date(),
-      Content: this.input};
-    this.httpService.sendMessage(message).subscribe(value => {});
+      senderId: this.user.id.toString(),
+      chatId: this.chat.id.toString(),
+      date: '01-02-2020',
+      content: this.input};
+    this.httpService.sendMessage(message).subscribe(value => console.log(value));
     this.input = '';
   }
 
   loadPrevious() {
 
+  }
+
+  ok() {
+    this.isAlert = false;
   }
 }

@@ -10,5 +10,8 @@ namespace LiveChatRegisterLogin.DTO
         
         [Required]
         public bool Action { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
     }
 }

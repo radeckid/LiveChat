@@ -1,8 +1,14 @@
 <div id="chat">
   <div id="load" (click)='loadPrevious()'> Load previous </div>
-  <div class="message" *ngFor="let message of chat.get()"> {{ message.content }}</div>
+  <div class="message" *ngFor="let message of this.messages"> {{ message.senderName }} <br /> {{ message.content }}</div>
 </div>
 <div id="textInput">
   Input: <input type="text" id="inputText" [(ngModel)]="input" />
   <input type="button" (click)='send()' value="Send"/>
 </div>
+<ng-container *ngIf="isAlert">
+  <div id="alert" >
+    <p>Error while download a messages. Please note at the notifications</p>
+    <input type="button" value="Ok" (click)="ok()" />
+  </div>
+<ng-container>

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace LiveChatRegisterLogin.Models
 {
+    [Serializable]
     public class User
     {
         [Key]
@@ -14,21 +15,23 @@ namespace LiveChatRegisterLogin.Models
         public string Email { get; set; }
 
         [JsonIgnore]
+        [field: NonSerialized]
         public virtual Password Password { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Message> SentMessages { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Message> ReceivedMessages { get; set; }
-
-        [JsonIgnore]
+        [field: NonSerialized]
         public virtual ICollection<Relation> Friends { get; set; }
 
         [JsonIgnore]
+        [field: NonSerialized]
+        public virtual ICollection<ChatMembership> ChatMemberships { get; set; }
+
+        [JsonIgnore]
+        [field: NonSerialized]
         public virtual ICollection<Notification> NotificationsSent { get; set; }
 
         [JsonIgnore]
+        [field: NonSerialized]
         public virtual ICollection<Notification> NotificationsReceived { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
-using LiveChatRegisterLogin.HubConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 
 namespace LiveChatRegisterLogin.Controllers
 {
@@ -13,13 +12,37 @@ namespace LiveChatRegisterLogin.Controllers
     [ApiController]
     public class NotificationController : Controller
     {
-        private IHubContext<NotificationHub> _hub;
         private INotificationRepository _repository;
 
-        public NotificationController(IHubContext<NotificationHub> hub, INotificationRepository repository)
+        public NotificationController(INotificationRepository repository)
         {
-            _hub = hub;
             _repository = repository;
+        }
+
+        [HttpGet("getAllSent/{userId}")]
+        public async Task<IActionResult> GetAllSentNotification(int userId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("The body of request is not valid");
+            }
+
+            var notifications = await _repository.GetAllSentNotification(userId).ConfigureAwait(true);
+
+            return Ok(notifications);
+        }
+
+        [HttpGet("getAllReceived/{userId}")]
+        public async Task<IActionResult> GetAllReceivedNotification(int userId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("The body of request is not valid");
+            }
+
+            var notifications = await _repository.GetAllReceivedNotification(userId).ConfigureAwait(true);
+
+            return Ok(notifications);
         }
 
         [HttpPost("invitation")]
@@ -40,26 +63,42 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Cannot find any user.");
             }
 
-            var notification = await _repository.AddInvitation(userId, newFriendId).ConfigureAwait(true);
+            var isSuccess = await _repository.AddInvitation(userId, newFriendId).ConfigureAwait(true); 
 
-            if (notification == null)
+            if (isSuccess)
             {
-                return BadRequest("Users have a relation.");
+                return Ok(new string("Invitation has just sent"));
             }
 
-            object[] param = { new NotificationChartModel
+            return BadRequest("Users have a relation.");
+        }
+
+        [HttpPost("deleteRelation")]
+        public async Task<IActionResult> DeleteRelation(RelationDeletionDTO deleteRelation)
+        {
+            if (!ModelState.IsValid || deleteRelation == null)
             {
-                SenderId = notification.SenderId,
-                ReceiverId = notification.ReceiverId,
-                Type = notification.Type,
-                Desc = notification.Desc,
-                ExtraData = notification.ExtraData,
-                Date = notification.Date
-            } };
+                return BadRequest("The body of request is not valid");
+            }
 
-            _ = _hub.Clients.All.SendCoreAsync("transfernotifications", param).ConfigureAwait(true);
+            if (!int.TryParse(deleteRelation.SenderId, out int senderId))
+            {
+                return BadRequest("Cannot parse sender id.");
+            }
 
-            return Ok(new string("Invitation has just sent"));
+            if (!int.TryParse(deleteRelation.ChatId, out int receiverId))
+            {
+                return BadRequest("Cannot parse chat id.");
+            }
+
+            bool isSuccess = await _repository.DeleteRelation(senderId, receiverId, deleteRelation.Reason).ConfigureAwait(true);
+
+            if(isSuccess)
+            {
+                return Ok();
+            }
+
+            return NotFound();
         }
 
         [HttpPost("proccess")]
@@ -75,9 +114,21 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Cannot parse notification id.");
             }
 
+            if (!int.TryParse(notificationDTO.UserId, out int userId))
+            {
+                return BadRequest("Cannot parse user id.");
+            }
+
             bool isNotificationAccepted = notificationDTO.Action;
 
-            await _repository.Process(notificationid, isNotificationAccepted).ConfigureAwait(true);
+            try
+            {
+                await _repository.Process(notificationid, isNotificationAccepted, userId).ConfigureAwait(true);
+            }
+            catch(ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
             return Ok();
         }

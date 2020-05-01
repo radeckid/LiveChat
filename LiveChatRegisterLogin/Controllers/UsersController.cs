@@ -93,8 +93,6 @@ namespace LiveChatRegisterLogin.Controllers
             var usertoBeCreated = new User
             {
                 Email = email,
-                ReceivedMessages = new List<Message>(),
-                SentMessages = new List<Message>(),
                 Friends = new List<Relation>(),
             };
 
@@ -118,6 +116,27 @@ namespace LiveChatRegisterLogin.Controllers
             {
                 return BadRequest("Cannot find user with provided id.");
             }
+
+            return Ok(users);
+        }
+
+        [HttpGet("friends/{userId}/{friendId}")]
+        public async Task<IActionResult> IsFriend(int userId, int friendId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("The body of request is not valid");
+            }
+
+            bool isFriend = await _repository.IsFriend(userId, friendId).ConfigureAwait(true);
+
+            return Ok(isFriend);
+        }
+
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var users = await _repository.GetAll().ConfigureAwait(true);
 
             return Ok(users);
         }

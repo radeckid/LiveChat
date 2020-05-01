@@ -1,8 +1,19 @@
 <div>
-  <div id="chatsList">
+  <div id="header" class="scaled">
+    <div id="logo">
+      <h1>Live chat - <ng-container *ngIf="isLogged"> {{ user.email }}</ng-container>
+      </h1>
+    </div>
+    <ng-container *ngIf="isLogged">
+      <div id="searchingUsers">
+      <app-searching-user-combo-box></app-searching-user-combo-box>
+      </div>
+    </ng-container>
+  </div>
+  <div id="chatsList" class="scaled">
     <app-list-chats></app-list-chats>
   </div>
-  <div id="centre" >
+  <div id="centre" class="scaled">
     <ng-container *ngIf="!isLogged;else chat">
       <app-Register></app-Register>
       <app-login></app-login>
@@ -10,6 +21,9 @@
     <ng-template #chat>
       <app-chat></app-chat>
     </ng-template>
+  </div >
+  <div id="notification" class="scaled">
+    <app-notification></app-notification>
   </div>
 </div>
 

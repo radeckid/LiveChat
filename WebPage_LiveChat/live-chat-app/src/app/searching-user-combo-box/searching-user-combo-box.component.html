@@ -1,0 +1,8 @@
+<div style="position: relative;">
+    <input type="text" [(ngModel)]="name">
+    <input type="button" value=">" (click)="expand()" />
+  <div id="expandedDiv" *ngIf="isExpanded">
+        <p *ngFor="let user of users"> {{ user.email }} <input type="button" (click)="invite(user.id)" value="Invite"/></p>
+  </div>
+</div>
+

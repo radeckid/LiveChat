@@ -36,6 +36,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
           "Pomelo.EntityFrameworkCore.MySql": "3.1.1",
           "System.IdentityModel.Tokens.Jwt": "5.6.0",
+          "System.Threading.Tasks": "4.3.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",

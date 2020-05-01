@@ -7,6 +7,6 @@ namespace LiveChatRegisterLogin.HubConfig
 {
     public class MessageChartModel
     {
-        public int ReceiverId { get; set; }
+        public int ChatId { get; set; }
     }
 }

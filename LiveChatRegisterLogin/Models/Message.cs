@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace LiveChatRegisterLogin.Models
 {
@@ -14,13 +12,19 @@ namespace LiveChatRegisterLogin.Models
 
         [Required]
         [ForeignKey("Sender")]
+        [JsonIgnore]
         public int SenderId { get; set; }
+        [JsonIgnore]
         public virtual User Sender { get; set; }
 
+        public string SenderName { get; set; }
+
         [Required]
-        [ForeignKey("Receiver")]
-        public int ReceiverId { get; set; }
-        public virtual User Receiver { get; set; }
+        [ForeignKey("Chat")]
+        [JsonIgnore]
+        public int ChatId { get; set; }
+        [JsonIgnore]
+        public virtual Chat Chat { get; set; }
 
         public DateTime Date { get; set; }
         

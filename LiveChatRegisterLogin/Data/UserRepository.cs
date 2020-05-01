@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace LiveChatRegisterLogin.Data
 {
@@ -25,10 +26,12 @@ namespace LiveChatRegisterLogin.Data
         public async Task<User> Login(string email, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email).ConfigureAwait(true);
-            var passwordUser = user.Password;
+           
 
             if (user == null)
                 return null;
+
+            var passwordUser = user.Password;
 
             if (!VerifyPasswordHash(password, passwordUser.PasswordHash, passwordUser.PasswordSalt))
                 return null;
@@ -81,7 +84,7 @@ namespace LiveChatRegisterLogin.Data
                 return true;
 
             return false;
-        }  
+        }
 
         private void CreatePasswordHashSalt(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
@@ -105,6 +108,27 @@ namespace LiveChatRegisterLogin.Data
                 }
                 return true;
             }
+        }
+
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            return await _context.Users.ToArrayAsync().ConfigureAwait(true);
+        }
+
+        public async Task<bool> IsFriend(int userId, int friendId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId).ConfigureAwait(true);
+            
+            if(user == null)
+            {
+                return false;
+            }
+
+            if(user.Friends.Any(x => x.FriendId == friendId))
+            {
+                return true;
+            }
+            return false;
         }
     }
 

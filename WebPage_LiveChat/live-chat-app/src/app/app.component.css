@@ -1,17 +1,52 @@
-#chatsList
+#header
 {
+  height: 10%;
+  width: 99%;
+  border-style: solid;
+  border-radius: 1px;
+}
+
+#logo
+{
+  float: left;
+  height: 90%;
+  width: 70%;
+  border-style: solid;
+  border-radius: 1px;
+  text-align: center;
+}
+
+#searchingUsers
+{
+  float: left;
+  height: 100%;
+  width: 28%;
+  border-style: solid;
+  border-radius: 1px;
+  text-align: center;
+}
+
+#chatsList {
   float: left;
   height: 100%;
   width: 20%;
   border-style: solid;
   border-radius: 1px;
 }
-#centre
-{
-  float: right;
+
+#centre {
+  float: left;
   height: 100%;
-  width: 79%;
+  width: 59%;
   border-style: solid;
   border-radius: 1px;
   text-align: center;
+}
+
+#notification {
+  float: left;
+  height: 100%;
+  width: 18%;
+  border-style: solid;
+  border-radius: 1px;
 }

@@ -7,8 +7,6 @@ using LiveChatRegisterLogin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace LiveChatRegisterLogin.Controllers
 {
@@ -17,14 +15,11 @@ namespace LiveChatRegisterLogin.Controllers
     [ApiController]
     public class MessagesController : ControllerBase
     {
-
-        private readonly DataContext _context;
         private IHubContext<MessagesHub> _hub;
-        private IUserRepository _repository;
+        private IMessagesRepository _repository;
 
-        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IUserRepository repository)
+        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IMessagesRepository repository)
         {
-            _context = context;
             _hub = hub;
             _repository = repository;
         }
@@ -42,49 +37,64 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Provided datetime is not valid.");
             }
 
-            User sender;
-            User receiver;
+            Chat chat;
+            User user;
 
-            //musimy sprawdzać czy użytkownik z danym id jest w bazie wgl
-            if(int.TryParse(message.SenderId, out int senderId) && int.TryParse(message.ReceiverId, out int receiverId))
+            if (int.TryParse(message.SenderId, out int senderId) && int.TryParse(message.ChatId, out int chatid))
             {
-                sender = await _context.Users.FirstOrDefaultAsync(x => x.Id == senderId).ConfigureAwait(true);
-                receiver = await _context.Users.FirstOrDefaultAsync(x => x.Id == receiverId).ConfigureAwait(true);
+                (chat, user) = await _repository.GetMessageCointainer(senderId, chatid).ConfigureAwait(true);
             }
             else
             {
                 return BadRequest("SenderId or receiverId has a wrong format.");
             }
 
-            if(sender == null || receiver == null)
+            if(chat == null || user == null)
             {
-                return BadRequest("One of the users doesn't exist");
+                return BadRequest("Cannot find chat or user.");
             }
 
-            if(!sender.Friends.Any(x => x.FriendId == receiver.Id))
+            await _repository.SendMessage(new Message
             {
-                string errorMessage = string.Concat("User ", receiver.Email, " is not your friend");
-                return BadRequest(errorMessage);
-            }
-
-            var addMessage = new Message
-            {
-                Sender = sender,
-                Receiver = receiver,
+                Sender = user,
+                SenderName = user.Email,
+                Chat = chat,
                 Date = messageDate,
-                Content = message.Content,
-            };
+                Content = message.Content
+            }).ConfigureAwait(true);
 
-            await _context.Messages.AddAsync(addMessage).ConfigureAwait(true);
-            await _context.SaveChangesAsync().ConfigureAwait(true);
+            object[] param = { new MessageChartModel { ChatId = chat.Id } };
+            await _hub.Clients.All.SendAsync("transferchartdata", param).ConfigureAwait(true);
 
-
-            object[] param = { new MessageChartModel { ReceiverId = receiverId } };
-            _ = _hub.Clients.All.SendCoreAsync("transfermesasges", param).ConfigureAwait(true);
-
-            return Ok(message);
+            return Ok(new { V = "received message" });
         }
 
+        [HttpGet("getAll/{userId}/{chatId}")]
+        public async Task<IActionResult> GetAll(string userId, string chatId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
 
+            Chat chat;
+            User user;
+
+            if (int.TryParse(userId, out int senderId) && int.TryParse(chatId, out int chatid))
+            {
+                (chat, user) = await _repository.GetMessageCointainer(senderId, chatid).ConfigureAwait(true);
+            }
+            else
+            {
+                return BadRequest("SenderId or receiverId has a wrong format.");
+            }
+
+            if (chat == null || user == null)
+            {
+                return BadRequest("Cannot find chat or user.");
+            }
+
+            return Ok(chat.Messages);
+        }
     }
 }

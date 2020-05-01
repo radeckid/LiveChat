@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ControlService } from '../services/control.service';
 import { HttpService } from '../services/http.service';
 import { User } from '../user';
+import { Chat } from '../chat';
 
 @Component({
   selector: 'app-list-chats',
@@ -11,21 +12,31 @@ import { User } from '../user';
 export class ListChatsComponent implements OnInit {
 
   isLogged: boolean;
-  friendList: Array<User>;
+  chats: Array<Chat>;
   user: User;
 
   constructor(private controlService: ControlService, private httpService: HttpService) {
     this.controlService.getUser().subscribe(user => {
       this.user = user;
     });
+    this.controlService.getLogged().subscribe( isLogged => {
+      if (isLogged) {
+        this.controlService.getChats().subscribe(chats => {
+          this.chats = chats;
+        });
+      }
+    });
    }
 
   ngOnInit(): void {
-    this.controlService.getLogged().subscribe( isLogged => {
-      if (isLogged) {
-        this.friendList = this.httpService.getAllFriend(this.user, this.httpService.token);
-      }
-    });
+
   }
 
+  setChat(chat: Chat) {
+    this.controlService.setChat(chat);
+  }
+
+  deleteChat(chat: Chat) {
+    this.controlService.deleteChat(chat.id, 'reason');
+  }
 }
