@@ -15,8 +15,10 @@
   </div>
   <div id="centre" class="scaled">
     <ng-container *ngIf="!isLogged;else chat">
-      <app-Register></app-Register>
-      <app-login></app-login>
+      <div style="text-align: center;">
+        <app-Register></app-Register>
+        <app-login></app-login>
+      </div>
     </ng-container>
     <ng-template #chat>
       <app-chat></app-chat>

@@ -26,6 +26,11 @@ namespace LiveChatRegisterLogin.Data
         {
             var chatsDTO = new List<ChatDTO>();
 
+            if(chats == null || chats.Count.Equals(0))
+            {
+                return chatsDTO;
+            }
+
             foreach(Chat chat in chats)
             {
                 switch(chat.Type)

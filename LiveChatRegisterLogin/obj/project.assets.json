@@ -54,6 +54,15 @@
           "lib/netstandard2.0/Json.Net.dll": {}
         }
       },
+      "Microsoft.AspNet.SignalR.Core/2.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.2": {
         "type": "package",
         "dependencies": {
@@ -2743,6 +2752,20 @@
         "json.net.1.0.18.nupkg.sha512",
         "json.net.nuspec",
         "lib/netstandard2.0/Json.Net.dll"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.Core/2.4.1": {
+      "sha512": "da5vF7ERsXAfFz2RzyXIV2VZACxsw+NxWwKtwXuHde7xuApvI/njJhpzq+LkoYpOYfzPZ8BbccaZ1yOaw1AQ4w==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr.core/2.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.pdb",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.xml",
+        "microsoft.aspnet.signalr.core.2.4.1.nupkg.sha512",
+        "microsoft.aspnet.signalr.core.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.2": {
@@ -8928,6 +8951,7 @@
     ".NETCoreApp,Version=v3.1": [
       "EntityFramework >= 6.4.0",
       "Json.Net >= 1.0.18",
+      "Microsoft.AspNet.SignalR.Core >= 2.4.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.2",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.3",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 2.9.8",
@@ -8985,6 +9009,10 @@
           "Json.Net": {
             "target": "Package",
             "version": "[1.0.18, )"
+          },
+          "Microsoft.AspNet.SignalR.Core": {
+            "target": "Package",
+            "version": "[2.4.1, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
@@ -9056,5 +9084,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.SignalR.Core 2.4.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.SignalR.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

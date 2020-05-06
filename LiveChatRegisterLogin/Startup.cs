@@ -1,9 +1,11 @@
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.HubConfig;
 using LiveChatRegisterLogin.Services;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -83,12 +85,16 @@ namespace LiveChatRegisterLogin
 
             app.UseCors("CorsPolicy");
 
+            var idProvider = new ConnectionService();
+
+            GlobalHost.DependencyResolver.Register(typeof(Microsoft.AspNet.SignalR.IUserIdProvider), () => idProvider);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<MessagesHub>("/messagechart");
                 endpoints.MapHub<NotificationHub>("/notificationchart");
-                //endpoints.MapHub<ConnectionHub>("/connection");
+                endpoints.MapHub<BaseHub>("/connection");
             });
         }
     }

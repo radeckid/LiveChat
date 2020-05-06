@@ -13,6 +13,7 @@ import { ControlService } from './services/control.service';
 import { MessageSignalRService } from './services/message-signal-r.service';
 import { NotificationComponent } from './notification/notification.component';
 import { SearchingUserComboBoxComponent } from './searching-user-combo-box/searching-user-combo-box.component';
+import { HubsControllerService } from './services/hubs-controller.service';
 
 @NgModule({
    declarations: [
@@ -30,7 +31,7 @@ import { SearchingUserComboBoxComponent } from './searching-user-combo-box/searc
       FormsModule,
       ChartsModule
    ],
-   providers: [HttpService, ControlService],
+   providers: [HttpService, ControlService, HubsControllerService],
    bootstrap: [
       AppComponent
    ]

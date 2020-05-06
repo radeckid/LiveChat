@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
 using LiveChatRegisterLogin.HubConfig;
 using LiveChatRegisterLogin.Models;
+using LiveChatRegisterLogin.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -17,11 +21,13 @@ namespace LiveChatRegisterLogin.Controllers
     {
         private IHubContext<MessagesHub> _hub;
         private IMessagesRepository _repository;
+        private IConnectionService _service;
 
-        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IMessagesRepository repository)
+        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IMessagesRepository repository, IConnectionService service)
         {
             _hub = hub;
             _repository = repository;
+            _service = service;
         }
 
         [HttpPost("post")]
@@ -63,38 +69,46 @@ namespace LiveChatRegisterLogin.Controllers
                 Content = message.Content
             }).ConfigureAwait(true);
 
-            object[] param = { new MessageChartModel { ChatId = chat.Id } };
-            await _hub.Clients.All.SendAsync("transferchartdata", param).ConfigureAwait(true);
+            var messageChartModel = new MessageChartModel
+            {
+                ChatId = chat.Id,
+                SenderName = user.Email,
+                Content = message.Content,
+                Date = messageDate
+            };
+
+            object[] param = { messageChartModel };
+            IEnumerable<int> userIds = chat.ChatMemberships.Select(x => x.UserId);
+
+            foreach(int userId in userIds)
+            {
+                string connectionId = _service.GetConnectionId(userId);
+                if(connectionId != null && connectionId.Trim().Length != 0)
+                {
+                    await _hub.Clients.User(connectionId).SendAsync("transferchartdata", param).ConfigureAwait(true);
+                }
+            }
+            
 
             return Ok(new { V = "received message" });
         }
 
-        [HttpGet("getAll/{userId}/{chatId}")]
-        public async Task<IActionResult> GetAll(string userId, string chatId)
+        [HttpPost("getLastTwentyMessages")]
+        public async Task<IActionResult> GetLastTwentyMessages(GetMessagesDTO getMessage)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Bad Request");
             }
 
-            Chat chat;
-            User user;
+            var messages = await _repository.GetMessageCointainer(getMessage).ConfigureAwait(true);
 
-            if (int.TryParse(userId, out int senderId) && int.TryParse(chatId, out int chatid))
+            if(messages == null)
             {
-                (chat, user) = await _repository.GetMessageCointainer(senderId, chatid).ConfigureAwait(true);
-            }
-            else
-            {
-                return BadRequest("SenderId or receiverId has a wrong format.");
+                return NotFound("Not found any chats with requester id.");
             }
 
-            if (chat == null || user == null)
-            {
-                return BadRequest("Cannot find chat or user.");
-            }
-
-            return Ok(chat.Messages);
+            return Ok(messages);
         }
     }
 }

@@ -95,7 +95,7 @@ namespace LiveChatRegisterLogin.Controllers
 
             if(isSuccess)
             {
-                return Ok();
+                return Ok(true);
             }
 
             return NotFound();

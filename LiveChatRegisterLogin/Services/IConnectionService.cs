@@ -7,7 +7,10 @@ namespace LiveChatRegisterLogin.Services
 {
     public interface IConnectionService
     {
-        void AddConnection(int userId, string connectionId);
-        void DisposeConnection(int userId);
+        bool AddConnection(string connectionId, int userId);
+        void DisposeConnection(string connectionId);
+        bool HasUserId(int userId);
+        bool HasConnection(string connectionId);
+        string GetConnectionId(int userId);
     }
 }

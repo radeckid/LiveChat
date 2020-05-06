@@ -21,7 +21,6 @@ namespace LiveChatRegisterLogin.Models
 
         [Required]
         [ForeignKey("Chat")]
-        [JsonIgnore]
         public int ChatId { get; set; }
         [JsonIgnore]
         public virtual Chat Chat { get; set; }

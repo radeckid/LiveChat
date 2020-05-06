@@ -1,5 +1,4 @@
-﻿using LiveChatRegisterLogin.Models;
-using LiveChatRegisterLogin.Types;
+﻿using LiveChatRegisterLogin.Types;
 using System;
 
 namespace LiveChatRegisterLogin.HubConfig

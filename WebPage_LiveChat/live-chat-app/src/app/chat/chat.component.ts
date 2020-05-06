@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Collection } from '../collection';
+import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
 import { MessageDTO } from '../messageDTO';
 import { Message } from '../message';
-import { MessageSignalRService } from '../services/message-signal-r.service';
 import { ControlService } from '../services/control.service';
-import { HttpService } from '../services/http.service';
 import { User } from '../user';
-import { ThemeService } from 'ng2-charts';
 import { Chat } from '../chat';
 
 @Component({
@@ -14,7 +10,10 @@ import { Chat } from '../chat';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('chat') private myScrollContainer: ElementRef;
+  @ViewChildren('messagesCointener') messagesCointener: QueryList<any>;
 
   user: User;
   input: string;
@@ -24,30 +23,31 @@ export class ChatComponent implements OnInit {
   isAlert: boolean;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private messageSignalRService: MessageSignalRService, private controlService: ControlService, private httpService: HttpService) {
+  constructor(private controlService: ControlService) {
     this.controlService.getUser().subscribe(user => {
       this.user = user;
     });
 
-    this.messages = new Array<Message>();
-
     this.controlService.getChat().subscribe(chat => {
       this.chat = chat;
-      this.httpService.getAllMessages(this.user.id, this.chat.id).subscribe(messages => {
-        this.messages = messages;
-      }, err => {
-        this.isAlert = true;
-      });
+      if (this.chat.id !== 0) {
+        this.controlService.getLastMessages();
+      }
     });
 
-    this.controlService.getRefreshStatus().subscribe(number => {
-        this.httpService.getAllMessages(this.user.id, this.chat.id).subscribe(messages => {
-            this.messages = messages;
-        });
-      });
+    this.controlService.getMessages().subscribe(messages => {
+      this.messages = messages;
+      this.down();
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    this.messagesCointener.changes.subscribe(t => {
+      this.down();
+    });
   }
 
   send() {
@@ -56,12 +56,21 @@ export class ChatComponent implements OnInit {
       chatId: this.chat.id.toString(),
       date: '01-02-2020',
       content: this.input};
-    this.httpService.sendMessage(message).subscribe(value => console.log(value));
+    this.controlService.sendMessage(message);
     this.input = '';
   }
 
-  loadPrevious() {
+  down() {
+    try {
+      console.log('here');
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) {
+      console.log("down");
+    }
+  }
 
+  loadPrevious() {
+    this.controlService.getLastMessages();
   }
 
   ok() {

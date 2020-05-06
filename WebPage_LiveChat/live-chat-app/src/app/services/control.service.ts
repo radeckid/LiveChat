@@ -4,13 +4,15 @@ import { User } from '../user';
 import { Chat } from '../chat';
 import { HttpService } from './http.service';
 import { MessageChartModel } from '../message-chart-model';
-import { ConnectionSignalRService } from '../connection-signal-r.service';
 import { UserNotification } from '../user-notification';
 import { ActionNotification } from '../action-notification';
 import { NotificationType } from '../notification-type.enum';
 import { RelationDeletion } from '../relation-deletion';
 import { RelationAdding } from '../relation-adding';
-import { concatMap, mergeMap } from 'rxjs/operators';
+import { MessageDTO } from '../messageDTO';
+import { Message } from '../message';
+import { LastMessagesController } from '../last-messages-controller';
+import { HubsControllerService } from './hubs-controller.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,50 @@ export class ControlService {
   chats: Subject<Array<Chat>> = new Subject();
   notifications: BehaviorSubject<Array<UserNotification>> = new BehaviorSubject<Array<UserNotification>>(null);
   isRefreshRequired: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  isChatRefreshNeeded: Subject<boolean> = new Subject<boolean>();
+  messages: BehaviorSubject<Array<Message>> = new BehaviorSubject<Array<Message>>(null);
+  chatsMap: Map<number, Array<Message>> = new Map<number, Array<Message>>();
 
-  constructor(private httpService: HttpService, private connectionSignalRSerivce: ConnectionSignalRService) { }
+  constructor(private httpService: HttpService, private hubsController: HubsControllerService) {
+    this.getIsChatRefreshNeeded().subscribe(x => {
+      if (x) {
+          this.httpService.getChats(this.user.value.id).subscribe(chats => {
+          this.chats.next(chats);
+          this.setIsChatRefreshNeeded(false);
+        });
+      }
+    });
+
+    this.hubsController.getMessage().subscribe(message => {
+      if (message.chatId === this.currentChat.value.id) {
+        this.addMessage(message);
+      }
+    });
+
+    this.hubsController.getNotification().subscribe(notification => {
+      this.addNotification(notification);
+    });
+
+    this.hubsController.getIsSuccessLoggedStatus().subscribe(x => {
+
+      if (this.user.value.id !== 0 && x) {
+        this.isUserLogged.next(x);
+        this.httpService.getChats(this.user.value.id).subscribe(chats => {
+          this.setChats(chats);
+        });
+        this.httpService.getAllFriend(this.user.value.id).subscribe(friends => {
+          this.setFriends(friends);
+        });
+        this.httpService.getUserNotifications(this.user.value.id).subscribe(notifications => {
+          this.setNotifications(notifications);
+        });
+      }
+    });
+  }
+
+ delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 
   public getNotifications(): Observable<Array<UserNotification>> {
     return this.notifications.asObservable();
@@ -39,24 +83,15 @@ export class ControlService {
     this.httpService.notificationProcess(notificationProcess).subscribe(x => {
       this.httpService.getUserNotifications(this.user.value.id).subscribe(notifications => {
           this.setNotifications(notifications);
-          this.httpService.getChats(this.user.value.id).subscribe(chats => {
-            console.log('i am here');
-            this.setChats(chats);
-          });
+          this.setIsChatRefreshNeeded(true);
       });
     });
   }
 
   public deleteChat(chatId: number, reason: string) {
-    let isEnd: boolean = false;
-    console.log('deleted');
     const relationDeletion: RelationDeletion = {senderId: this.user.value.id, chatId, reason};
-    console.log('before deletion');
     this.httpService.deleteRelation(relationDeletion).subscribe(x => {
-      console.log('here');
-      isEnd = true;
-    }, error => {
-      isEnd = true;
+      this.setIsChatRefreshNeeded(x);
     });
   }
   addRelation(relationAdding: RelationAdding) {
@@ -72,12 +107,19 @@ export class ControlService {
     }
   }
 
+  public getIsChatRefreshNeeded(): Observable<boolean> {
+    return this.isChatRefreshNeeded;
+  }
+
+  public setIsChatRefreshNeeded(isChatRefreshNeeded: boolean) {
+    this.isChatRefreshNeeded.next(isChatRefreshNeeded);
+  }
+
   public getChats(): Observable<Array<Chat>> {
     return this.chats;
   }
 
   public setChats(chats: Array<Chat>) {
-
     this.chats.next(chats);
   }
 
@@ -86,6 +128,7 @@ export class ControlService {
   }
 
   public setChat(chat: Chat) {
+    this.setMessages(null);
     this.currentChat.next(chat);
   }
 
@@ -111,17 +154,7 @@ export class ControlService {
   }
 
   setLogged(user: User) {
-    this.isUserLogged.next(true);
-    this.httpService.getChats(user.id).subscribe(chats => {
-      this.setChats(chats);
-    });
-    this.httpService.getAllFriend(user.id).subscribe(friends => {
-      this.setFriends(friends);
-    });
-    this.httpService.getUserNotifications(user.id).subscribe(notifications => {
-      this.setNotifications(notifications);
-    });
-    //this.connectionSignalRSerivce.startConnection(user.id);
+    this.hubsController.startListen(user.id);
   }
 
   getLogged(): Observable<boolean> {
@@ -131,10 +164,46 @@ export class ControlService {
   setRefreshStatus(messageChartModels: Array<MessageChartModel>) {
     messageChartModels.forEach(messageChartModel => {
       if (this.currentChat.value.id === messageChartModel.chatId) {
-        console.log('after');
         this.isRefreshRequired.next(this.isRefreshRequired.value + 1);
       }
     });
+  }
+
+  getMessages(): Observable<Array<Message>> {
+    return this.messages;
+  }
+
+  setMessages(messages: Array<Message>) {
+    this.messages.next(messages);
+  }
+
+  getLastMessages() {
+    let idLastMessage: number;
+    if (this.messages.value == null || this.messages.value.length === 0) {
+      idLastMessage = 0;
+    } else {
+      idLastMessage = this.messages.value[0].id;
+    }
+    const lastMessageController: LastMessagesController = {idLastMessage,
+      chatId: this.currentChat.value.id, requesterId: this.user.value.id};
+    this.httpService.getLastMessages(lastMessageController).subscribe(messages => {
+      if (this.messages.value != null) {
+        this.messages.value.forEach(message => {
+          messages.push(message);
+        });
+      }
+      this.messages.next(messages);
+    });
+  }
+
+  addMessage(message: Message) {
+    const messages: Array<Message> = this.messages.value;
+    messages.push(message);
+    this.messages.next(messages);
+  }
+
+  sendMessage(message: MessageDTO) {
+    this.httpService.sendMessage(message).subscribe(value => console.log(value));
   }
 
   getRefreshStatus(): Observable<number> {

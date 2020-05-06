@@ -3,7 +3,7 @@ import { ControlService } from './services/control.service';
 import { MessageSignalRService } from './services/message-signal-r.service';
 import { NotificationSignalRService } from './services/notification-signal-r.service';
 import { User } from './user';
-import { ConnectionSignalRService } from './connection-signal-r.service';
+import { ConnectionSignalRService } from './services/connection-signal-r.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   isLogged: boolean;
   user: User;
 
-  constructor(private controlService: ControlService, private messageSignalRService: MessageSignalRService, private notificationSignalRService: NotificationSignalRService) { }
+  constructor(private controlService: ControlService) { }
 
   ngOnInit(): void {
     this.controlService.getLogged().subscribe( isLogged => {
@@ -27,11 +27,5 @@ export class AppComponent implements OnInit {
     this.controlService.getUser().subscribe(user => {
       this.user = user;
     });
-
-    this.messageSignalRService.startConnection();
-    this.messageSignalRService.addTransferChartDataListener();
-
-    this.notificationSignalRService.startConnection();
-    this.notificationSignalRService.addTransferChartDataListener();
   }
 }

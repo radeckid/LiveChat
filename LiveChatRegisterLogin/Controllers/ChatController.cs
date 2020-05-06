@@ -33,11 +33,6 @@ namespace LiveChatRegisterLogin.Controllers
 
             var chats = _repository.GetChats(userId);
 
-            if(chats == null || chats.Count == 0)
-            {
-                return Ok("You have not any chat");
-            }
-
             return Ok(_repository.ConvertChats(chats, userId));
         }
     }

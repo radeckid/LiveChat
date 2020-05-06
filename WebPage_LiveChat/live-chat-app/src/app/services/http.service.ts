@@ -12,6 +12,7 @@ import { UserNotification } from '../user-notification';
 import { ActionNotification } from '../action-notification';
 import { RelationDeletion } from '../relation-deletion';
 import { RelationAdding } from '../relation-adding';
+import { LastMessagesController } from '../last-messages-controller';
 
 @Injectable({
   providedIn: 'root'
@@ -59,15 +60,16 @@ export class HttpService {
     return this.httpClient.post<string>(this.url + 'Messages/post', message, {headers: headersLivechat});
   }
 
-  getAllMessages(userId: number, chatId: number): Observable<Array<Message>> {
-    if (chatId === 0) {
+  getLastMessages(lastMessagesController: LastMessagesController): Observable<Array<Message>> {
+    if (lastMessagesController.chatId === 0) {
       return EMPTY;
     }
     const headersLivechat = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token,
     });
 
-    return this.httpClient.get<Array<Message>>(this.url + 'Messages/getAll/' + userId + '/' + chatId, {headers: headersLivechat});
+    // tslint:disable-next-line: max-line-length
+    return this.httpClient.post<Array<Message>>(this.url + 'Messages/getLastTwentyMessages/', lastMessagesController, {headers: headersLivechat});
   }
 
   getChats(userId: number): Observable<Array<Chat>> {

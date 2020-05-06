@@ -1,6 +1,6 @@
-<div id="chat">
-  <div id="load" (click)='loadPrevious()'> Load previous </div>
-  <div class="message" *ngFor="let message of this.messages"> {{ message.senderName }} <br /> {{ message.content }}</div>
+<div #chat id="chat">
+  <div id="load"> <input type="button" (click)="loadPrevious()" value="Load previous" /></div>
+  <div #messagesCointener class="message" *ngFor="let message of this.messages"><p>{{ message.senderName }} <br /> {{ message.content }}</p></div>
 </div>
 <div id="textInput">
   Input: <input type="text" id="inputText" [(ngModel)]="input" />

@@ -23,8 +23,9 @@
 
 .message {
   height: 10%;
-  width: 10%;
+  width: 50%;
   margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 #alert {

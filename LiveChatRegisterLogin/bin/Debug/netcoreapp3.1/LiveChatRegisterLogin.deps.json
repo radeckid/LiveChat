@@ -26,6 +26,7 @@
         "dependencies": {
           "EntityFramework": "6.4.0",
           "Json.Net": "1.0.18",
+          "Microsoft.AspNet.SignalR.Core": "2.4.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.2",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.3",
           "Microsoft.CodeAnalysis.FxCopAnalyzers": "2.9.8",
@@ -362,6 +363,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Json.Net.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR.Core/2.4.1": {
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.19093"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.2": {
@@ -3877,6 +3889,13 @@
       "sha512": "sha512-LeHX1l1FbTeg5C6rvx19qE/OLrPM7ggmlMBJgu08bcMn9anbE0SEF3BXwhUrio8/f0445XJnAaE5gmhqRCEuzw==",
       "path": "json.net/1.0.18",
       "hashPath": "json.net.1.0.18.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.Core/2.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-da5vF7ERsXAfFz2RzyXIV2VZACxsw+NxWwKtwXuHde7xuApvI/njJhpzq+LkoYpOYfzPZ8BbccaZ1yOaw1AQ4w==",
+      "path": "microsoft.aspnet.signalr.core/2.4.1",
+      "hashPath": "microsoft.aspnet.signalr.core.2.4.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.2": {
       "type": "package",

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.SignalR;
 using LiveChatRegisterLogin.HubConfig;
-using System.Security.Cryptography.X509Certificates;
-using System.Data.Entity.Validation;
 using LiveChatRegisterLogin.Types;
 
 namespace LiveChatRegisterLogin.Data
@@ -42,6 +40,11 @@ namespace LiveChatRegisterLogin.Data
         {
             var sender = await _context.Users.FirstOrDefaultAsync(x => x.Id == requesterId).ConfigureAwait(true);
             var receiver = await _context.Users.FirstOrDefaultAsync(x => x.Id == newFriendId).ConfigureAwait(true);
+            
+            if(_context.Notifications.Any(x => x.ReceiverId == newFriendId && x.SenderId == requesterId && x.Type == NotificationType.Invitation))
+            {
+                return false;
+            }
 
             if (sender.Friends.Any(x => x.FriendId == newFriendId))
             {
