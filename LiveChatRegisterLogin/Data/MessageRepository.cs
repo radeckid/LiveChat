@@ -56,11 +56,11 @@ namespace LiveChatRegisterLogin.Data
 
             if (getMessages.IdLastMessage == 0)
             {
-                getMessages.IdLastMessage = messagesToProccess.LastOrDefault().ChatId;
+                getMessages.IdLastMessage = messagesToProccess.LastOrDefault().Id;
             }
 
             int iterator = 0;
-            var messageWithCorrectedId = messagesToProccess.Where(x => x.Id < getMessages.IdLastMessage).ToList();
+            var messageWithCorrectedId = messagesToProccess.Where(x => x.Id <= getMessages.IdLastMessage).ToList();
 
             for(int i = messageWithCorrectedId.Count - 1; i >= 0; i--)
             {

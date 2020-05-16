@@ -11,5 +11,7 @@ namespace LiveChatRegisterLogin.DTO
         public string ChatId { get; set; }
 
         public string Reason { get; set; }
+
+        public string MemberId { get; set; }
     }
 }

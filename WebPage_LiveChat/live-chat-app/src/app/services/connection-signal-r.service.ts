@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ControlService } from './control.service';
 import * as signalR from '@aspnet/signalr';
 import { Subject, Observable } from 'rxjs';
+import { IHttpConnectionOptions } from '@aspnet/signalr';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,27 +18,31 @@ export class ConnectionSignalRService {
     return this.isSuccessLogged.asObservable();
   }
 
-   startConnection(userId: number) {
-     this.hubConnection = new signalR.HubConnectionBuilder()
+   startConnection(userId: number, token: string) {
+    const options: IHttpConnectionOptions = {
+      accessTokenFactory: () => {
+        return token;
+      }
+    };
 
-     .withUrl('http://localhost:53064/connection')
+    this.hubConnection = new signalR.HubConnectionBuilder()
+
+     .withUrl('http://localhost:53064/connection', options)
      .build();
 
-     this.hubConnection
+    this.hubConnection
      .start()
-     .then(() => {
-       this.hubConnection.invoke<boolean>('GetConnectionId', userId).then(value => {
-         if (!value.valueOf()) {
-            this.isSuccessLogged.next(false);
-         } else {
-          this.isSuccessLogged.next(true);
-         }
-       });
-     })
+     .then(() => this.hubConnection.invoke<boolean>('GetConnectionId', userId).then(value => {
+      if (!value.valueOf()) {
+         this.isSuccessLogged.next(false);
+      } else {
+       this.isSuccessLogged.next(true);
+      }
+    })
      .catch(err => {
       console.log('Error while starting connection: ' + err);
       this.isSuccessLogged.next(false);
-     });
+     }));
      this.isSuccessLogged.next(false);
    }
 }

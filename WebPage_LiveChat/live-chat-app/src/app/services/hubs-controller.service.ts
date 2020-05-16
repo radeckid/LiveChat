@@ -13,7 +13,9 @@ export class HubsControllerService {
 
   messageData: Subject<Message> = new Subject<Message>();
   notificationData: Subject<UserNotification> = new Subject<UserNotification>();
+
   private isSuccessLogged: Subject<boolean> = new Subject<boolean>();
+  private token: string;
 
   // tslint:disable-next-line: max-line-length
   constructor(private messageSignalRService: MessageSignalRService, private notificationSignalRService: NotificationSignalRService, private connectionSignalRSerivce: ConnectionSignalRService) {
@@ -33,10 +35,10 @@ export class HubsControllerService {
       this.isSuccessLogged.next(x);
 
       if (x) {
-        this.messageSignalRService.startConnection();
+        this.messageSignalRService.startConnection(this.token);
         this.messageSignalRService.addTransferChartDataListener();
 
-        this.notificationSignalRService.startConnection();
+        this.notificationSignalRService.startConnection(this.token);
         this.notificationSignalRService.addTransferChartDataListener();
       }
     });
@@ -54,7 +56,8 @@ export class HubsControllerService {
     return this.isSuccessLogged.asObservable();
   }
 
-  startListen(userId: number) {
-    this.connectionSignalRSerivce.startConnection(userId);
+  startListen(userId: number, token: string) {
+    this.token = token;
+    this.connectionSignalRSerivce.startConnection(userId, this.token);
   }
 }

@@ -37,6 +37,6 @@ export class SearchingUserComboBoxComponent implements OnInit {
 
   invite(otherId: number) {
     console.log('seatchig');
-    this.controlService.addRelation({userId: this.controlService.user.value.id, otherId});
+    this.controlService.invite({userId: this.controlService.user.value.id, otherId});
   }
 }

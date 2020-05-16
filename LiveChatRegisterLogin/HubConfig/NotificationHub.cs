@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using LiveChatRegisterLogin.Services;
 using System;
-using System.Threading.Tasks;
 
 namespace LiveChatRegisterLogin.HubConfig
 {
-    public class NotificationHub : Hub
+    public class NotificationHub : BaseHub
     {
-        public override async Task OnDisconnectedAsync(Exception exception)
+        protected override ServiceTypes Type => ServiceTypes.NotificationConnectionService;
+
+        public NotificationHub(Func<ServiceTypes, IConnectionService> servicesResolver) : base(servicesResolver)
         {
-            await base.OnDisconnectedAsync(exception);
+           
         }
     }
 }

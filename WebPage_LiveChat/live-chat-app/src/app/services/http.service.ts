@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDTO } from '../userDTO';
 import { Observable, EMPTY } from 'rxjs';
 import { Message } from '../message';
@@ -7,12 +7,12 @@ import { User } from '../user';
 import { MessageDTO } from '../messageDTO';
 import { LoginResponse } from '../login-response';
 import { Chat } from '../chat';
-import { retry, catchError } from 'rxjs/operators';
 import { UserNotification } from '../user-notification';
 import { ActionNotification } from '../action-notification';
-import { RelationDeletion } from '../relation-deletion';
-import { RelationAdding } from '../relation-adding';
+import { Deletion } from '../deletion';
+import { Invitation } from '../invitation';
 import { LastMessagesController } from '../last-messages-controller';
+import { ChatGroupDTO } from '../chat-group-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +80,22 @@ export class HttpService {
     return this.httpClient.get<Array<Chat>>(this.url + "Chat/getAll/" + userId, {headers: headersLivechat});
   }
 
+  createGroupChat(dto: ChatGroupDTO): Observable<Chat> {
+    const headersLivechat = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
+    });
+
+    return this.httpClient.post<Chat>(this.url + 'Chat/createGroupChat/', dto, {headers: headersLivechat});
+  }
+
+  getChatMembers(chatId: number): Observable<Array<User>> {
+    const headersLivechat = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
+    });
+
+    return this.httpClient.get<Array<User>>(this.url + "Chat/getChatMembers/" + chatId, {headers: headersLivechat});
+  }
+
   getUserNotifications(userId: number): Observable<Array<UserNotification>> {
     const headersLivechat = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token,
@@ -96,7 +112,7 @@ export class HttpService {
     return this.httpClient.post(this.url + 'Notification/proccess', actionNotification, {headers: headersLivechat,  responseType: 'text'});
   }
 
-  deleteRelation(relationDeletion: RelationDeletion): Observable<any> {
+  deleteMemberFromChat(relationDeletion: Deletion): Observable<any> {
     const headersLivechat = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token,
     });
@@ -105,7 +121,7 @@ export class HttpService {
     return this.httpClient.post(this.url + 'Notification/deleteRelation', relationDeletion, {headers: headersLivechat,  responseType: 'text'});
   }
 
-  addingRelation(relationAdding: RelationAdding): Observable<any> {
+  invite(relationAdding: Invitation): Observable<any> {
     const headersLivechat = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token,
     });

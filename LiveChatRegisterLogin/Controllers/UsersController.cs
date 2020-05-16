@@ -9,6 +9,7 @@ using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
 using LiveChatRegisterLogin.Models;
 using LiveChatRegisterLogin.Response;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

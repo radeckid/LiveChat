@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
+using LiveChatRegisterLogin.Containers;
 using LiveChatRegisterLogin.Data;
 using LiveChatRegisterLogin.DTO;
+using LiveChatRegisterLogin.Models;
+using LiveChatRegisterLogin.Types;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +31,7 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("The body of request is not valid");
             }
 
-            var notifications = await _repository.GetAllSentNotification(userId).ConfigureAwait(true);
+            var notifications = _repository.GetAllSentNotification(userId);
 
             return Ok(notifications);
         }
@@ -40,7 +44,7 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("The body of request is not valid");
             }
 
-            var notifications = await _repository.GetAllReceivedNotification(userId).ConfigureAwait(true);
+            var notifications = _repository.GetAllReceivedNotification(userId);
 
             return Ok(notifications);
         }
@@ -63,7 +67,21 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Cannot find any user.");
             }
 
-            var isSuccess = await _repository.AddInvitation(userId, newFriendId).ConfigureAwait(true); 
+            NotificationType type = NotificationType.Invitation;
+            int chatId = 0;
+
+            if(!ivnitationDTO.ChatId.IsNullOrEmpty() && int.TryParse(ivnitationDTO.ChatId, out chatId) && !chatId.Equals(0))
+            {
+                type = NotificationType.GroupInvitation;
+            }
+
+            var isSuccess = await _repository.AddInvitation( new InvitationContainer 
+            { 
+                RequesterId = userId,
+                ReceiverId = newFriendId,
+                ChatId = chatId,
+                Type = type
+            }).ConfigureAwait(true); 
 
             if (isSuccess)
             {
@@ -86,12 +104,24 @@ namespace LiveChatRegisterLogin.Controllers
                 return BadRequest("Cannot parse sender id.");
             }
 
-            if (!int.TryParse(deleteRelation.ChatId, out int receiverId))
+            if (!int.TryParse(deleteRelation.ChatId, out int chatId))
             {
                 return BadRequest("Cannot parse chat id.");
             }
 
-            bool isSuccess = await _repository.DeleteRelation(senderId, receiverId, deleteRelation.Reason).ConfigureAwait(true);
+            int memberId = default;
+            if (!deleteRelation.MemberId.IsNullOrEmpty() && !int.TryParse(deleteRelation.MemberId, out memberId))
+            {
+                return BadRequest("Cannot parse member id.");
+            }
+
+            bool isSuccess = await _repository.DeleteMembership(new DeletionMemberContainer
+            { 
+                SenderId = senderId,
+                ChatId = chatId,
+                Reason = deleteRelation.Reason,
+                MemberId = memberId
+            }).ConfigureAwait(true);
 
             if(isSuccess)
             {

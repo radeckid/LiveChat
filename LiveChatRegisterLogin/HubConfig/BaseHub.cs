@@ -1,38 +1,38 @@
 ﻿using LiveChatRegisterLogin.Services;
-using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Threading.Tasks;
+using Hub = Microsoft.AspNetCore.SignalR.Hub;
 
 namespace LiveChatRegisterLogin.HubConfig
 {
-    public class BaseHub : Hub
+    [Authorize]
+    public abstract class BaseHub : Hub
     {
-        private IConnectionService _service;
+        protected abstract ServiceTypes Type { get; }
 
-        public BaseHub(IConnectionService service)
+        private IConnectionService _connectionService;
+
+        public BaseHub(Func<ServiceTypes, IConnectionService> servicesResolver)
         {
-            _service = service;
+            _connectionService = servicesResolver(Type);
         }
 
-        public bool GetConnectionId(int userId)
+        public override Task OnConnectedAsync()
         {
-            if(_service.HasUserId(userId))
+            if(int.TryParse(Context.UserIdentifier, out int userId))
             {
-                return false;
+                _connectionService.AddConnection(Context.ConnectionId, userId);
+
+                return base.OnConnectedAsync();
             }
-            
-            _service.AddConnection(Context.User.Identity.Name, userId);
-            return true;
+
+            throw new Microsoft.AspNetCore.SignalR.HubException("Cannot parse user id");
         }
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            string connectionid = Context.ConnectionId;
-            if (_service.HasConnection(connectionid))
-            {
-                _service.DisposeConnection(connectionid);
-                Context.Abort();
-            }
+            _connectionService.DisposeConnection(Context.ConnectionId);
 
             return base.OnDisconnectedAsync(exception);
         }

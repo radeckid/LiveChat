@@ -1,5 +1,6 @@
 ﻿using LiveChatRegisterLogin.Types;
 using System;
+using System.Collections.Generic;
 
 namespace LiveChatRegisterLogin.HubConfig
 {

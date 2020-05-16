@@ -1,64 +1,42 @@
 ﻿using LiveChatRegisterLogin.Containers;
 using LiveChatRegisterLogin.Models;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LiveChatRegisterLogin.Services
 {
-    public class ConnectionService : IConnectionService, IUserIdProvider
+    public abstract class ConnectionService : IConnectionService
     {
-        public IList<ConnectionContainer> Connections { get; set; }
+        private IList<ConnectionContainer> _connections;
 
         public ConnectionService()
         {
-            Connections = new List<ConnectionContainer>();
+            _connections = new List<ConnectionContainer>();
         }
 
-        public bool AddConnection(string connectionId, int userId)
+        public void AddConnection(string connectionId, int userId)
         {
-            if(Connections.Any(x => x.UserId == userId))
+            _connections.Add(new ConnectionContainer
             {
-                return false;
-            }
-
-            Connections.Add(new ConnectionContainer
-            {
-                UserId = userId,
-                ConnectionId = connectionId
+                ConnectionId = connectionId,
+                UserId = userId
             });
-
-            return true;
         }
 
         public void DisposeConnection(string connectionId)
         {
-            var connection = Connections.FirstOrDefault(x => x.ConnectionId.Equals(connectionId, StringComparison.InvariantCulture));
-            Connections.Remove(connection);
-        }
+            var connection = _connections.FirstOrDefault(x => x.ConnectionId.Equals(connectionId, StringComparison.CurrentCulture));
 
-        public bool HasUserId(int userId)
-        {
-            return Connections.Any(x => x.UserId == userId);
-        }
-
-        public bool HasConnection(string connectionId)
-        {
-            return Connections.Any(x => x.ConnectionId.Equals(connectionId, StringComparison.InvariantCulture));
+            if (connection != null)
+            {
+                _connections.Remove(connection);
+            }
         }
 
         public string GetConnectionId(int userId)
         {
-            return Connections.FirstOrDefault(x => x.UserId == userId)?.ConnectionId ?? string.Empty;
-        }
-
-        public string GetUserId(HubConnectionContext connection)
-        {
-            string b = connection.User.Identity.Name;
-
-            return b;
+            return _connections.FirstOrDefault(x => x.UserId.Equals(userId))?.ConnectionId;
         }
     }
 }

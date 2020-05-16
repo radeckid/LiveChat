@@ -8,9 +8,27 @@
         <input type="button" (click)="action(notificationType.Invitation, true, notification.id)" value="Yes" />
         <input type="button" (click)="action(notificationType.Invitation, false, notification.id)" value="No" />
       </div>
+      <div *ngSwitchCase="notificationType.GroupInvitation">
+        <h1>Invitation to group</h1>
+        <p>{{ notification.desc }}</p>
+        <input type="button" (click)="action(notificationType.Invitation, true, notification.id)" value="Yes" />
+        <input type="button" (click)="action(notificationType.Invitation, false, notification.id)" value="No" />
+      </div>
       <div *ngSwitchCase="notificationType.RelationDeletion">
-        <h1>Invitation</h1>
+        <h1>Deletion</h1>
         <p>User {{ notification.senderEmail }} deleted you from friends.</p>
+        <p>Reason: {{ notification.desc }}</p>
+        <input type="button" (click)="action(notificationType.RelationDeletion, true, notification.id)" value="Yes" />
+      </div>
+      <div *ngSwitchCase="notificationType.GroupLeaving">
+        <h1>Leaving</h1>
+        <p>User {{ notification.senderEmail }} left from {{ notification.extraData }}.</p>
+        <p>Reason: {{ notification.desc }}</p>
+        <input type="button" (click)="action(notificationType.RelationDeletion, true, notification.id)" value="Yes" />
+      </div>
+      <div *ngSwitchCase="notificationType.GroupDeletion">
+        <h1>Deletion</h1>
+        <p>Owner group of {{  notification.extraData }} deleted you from chat.</p>
         <p>Reason: {{ notification.desc }}</p>
         <input type="button" (click)="action(notificationType.RelationDeletion, true, notification.id)" value="Yes" />
       </div>

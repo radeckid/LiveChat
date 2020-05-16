@@ -23,11 +23,11 @@ namespace LiveChatRegisterLogin.Controllers
         private IMessagesRepository _repository;
         private IConnectionService _service;
 
-        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IMessagesRepository repository, IConnectionService service)
+        public MessagesController(DataContext context, IHubContext<MessagesHub> hub, IMessagesRepository repository, Func<ServiceTypes, IConnectionService> servicesResolver)
         {
             _hub = hub;
             _repository = repository;
-            _service = service;
+            _service = servicesResolver(ServiceTypes.MessageConnectionService);
         }
 
         [HttpPost("post")]
@@ -78,17 +78,16 @@ namespace LiveChatRegisterLogin.Controllers
             };
 
             object[] param = { messageChartModel };
-            IEnumerable<int> userIds = chat.ChatMemberships.Select(x => x.UserId);
+            IEnumerable<int> userIds = chat.ChatMemberships.Select(x => x.User.Id);
 
             foreach(int userId in userIds)
             {
                 string connectionId = _service.GetConnectionId(userId);
                 if(connectionId != null && connectionId.Trim().Length != 0)
                 {
-                    await _hub.Clients.User(connectionId).SendAsync("transferchartdata", param).ConfigureAwait(true);
+                    _ = _hub.Clients.Client(connectionId).SendAsync("transferchartdata", param).ConfigureAwait(true);
                 }
             }
-            
 
             return Ok(new { V = "received message" });
         }

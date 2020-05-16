@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ControlService } from './control.service';
 import * as signalR from '@aspnet/signalr';
 import { Subject, Observable } from 'rxjs';
+import { IHttpConnectionOptions } from '@aspnet/signalr';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,19 @@ export class NotificationSignalRService {
 
   constructor() { }
 
-   startConnection() {
-     this.hubConnection = new signalR.HubConnectionBuilder()
+   startConnection(token: string) {
+    const options: IHttpConnectionOptions = {
+      accessTokenFactory: () => {
+        return token;
+      }
+    };
 
-     .withUrl('http://localhost:53064/notificationchart')
+    this.hubConnection = new signalR.HubConnectionBuilder()
+
+     .withUrl('http://localhost:53064/notificationchart', options)
      .build();
 
-     this.hubConnection
+    this.hubConnection
      .start()
      .then(() => console.log('Connection started notification'))
      .catch(err => console.log('Error while starting connection: ' + err));

@@ -14,6 +14,7 @@ namespace LiveChatRegisterLogin.Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<ChatMembership> ChatMemberships { get; set; }
+        public DbSet<UserTrace> UsersTrace { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

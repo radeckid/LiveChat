@@ -267,7 +267,7 @@ D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Mi
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Json.Net.dll
-D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.csprojAssemblyReference.cache
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\bin\Debug\netcoreapp3.1\Microsoft.AspNet.SignalR.Core.dll
+D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.csprojAssemblyReference.cache
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.csproj.CoreCompileInputs.cache
 D:\Projekty\C#\Projekt\LiveChat\LiveChatRegisterLogin\obj\Debug\netcoreapp3.1\LiveChatRegisterLogin.MvcApplicationPartsAssemblyInfo.cache

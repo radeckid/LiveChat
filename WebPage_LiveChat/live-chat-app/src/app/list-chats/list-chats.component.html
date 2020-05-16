@@ -1,6 +1,23 @@
+<input type="button" (click)="getChatName()" value="New chat"/> <br />
+<ng-container *ngIf="isCreatingGroupChat"> <br />
+  <input type="text" [(ngModel)]="chatName" /> <br />
+  <input type="button" (click)="createChat()" value="Create chat" /> <br />
+  <p> {{ expression }}</p>
+</ng-container>
+
 <ul>
   <li *ngFor="let chat of chats">
     <input type="button" (click)="setChat(chat)" value="{{ chat.name }}" />
     <input type="button" (click)="deleteChat(chat)" value="Delete" />
+    <ng-container *ngIf="chat.type == chatType.GroupChat">
+      <input type="button" (click)="showFriends(chat, true)" value="Invite" />
+      <div id="expandedDiv" *ngIf="isRequstToInviteToGroup && actualChatGroupSelected === chat.id">
+        <p *ngFor="let user of memberCurrentChat"> {{ user.email }} <input type="button" (click)="invite(user.id, chat.id)" value="Invite"/></p>
+      </div>
+      <input type="button" (click)="showFriends(chat, false)" value="Delete member" *ngIf="chat.ownerId === user.id"/>
+      <div id="expandedDiv" *ngIf="isRequestToDeleteMember && actualChatGroupSelected === chat.id">
+        <p *ngFor="let user of memberCurrentChat"> {{ user.email }} <input type="button" (click)="deleteMember(chat.id, user.id)" value="Delete"/></p>
+      </div>
+    </ng-container>
   </li>
 </ul>

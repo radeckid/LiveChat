@@ -1,5 +1,8 @@
 export enum NotificationType {
   Invitation = 0,
-  RelationDeletion = 1,
-  Information = 2
+  GroupInvitation = 1,
+  RelationDeletion = 2,
+  GroupLeaving = 3,
+  GroupDeletion = 4,
+  Information = 5
 }
