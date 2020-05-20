@@ -1,5 +1,5 @@
-\documentclass[10pt,a4paper]{article}
-%\documentclass[12pt,a4paper]{article}
+%\documentclass[10pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
@@ -156,16 +156,78 @@ konto. Mogą to być zarówno firmy, które chcą komunikować się między sob�
 	\label{fig:dotnet5platform}
 \end{figure}
 
-Framework .Net Core został przez nas wybrany, ponieważ jest to nowa oraz dobrze prosperująca technologia wprowadzająca dużą dawkę świeżości podczas tworzenia nowego oprogramowania. Posiada wsparcie dla tworzenia web serwisów opartych o metodykę REST, poprzez dodanie nowych i gotowych do działania bibliotek. Platforma .Net Core jest znacznie wydajniejsza od .Net Framework. Wprowadza znaczące usprawnienia przekładające się na szybkość działania pisanych programów.
+Framework .Net Core został przez nas wybrany, ponieważ jest to nowa oraz dobrze prosperująca technologia wprowadzająca dużą dawkę świeżości podczas tworzenia nowego oprogramowania. Posiada wsparcie dla tworzenia web serwisów opartych o metodykę REST, poprzez dodanie nowych i gotowych do działania bibliotek. Platforma .Net Core jest znacznie wydajniejsza od .Net Framework. Wprowadza znaczące usprawnienia przekładające się na szybkość działania pisanych programów. Architektura przedstawia się w sposób następujący.\newline
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{net-Core-1}
+	\caption{Architektura .NET Core}
+	\label{fig:net-core-1}
+\end{figure}
 
 \subsection{Entity Framework}   %ja
+
+\hspace*{0.7cm} Entity Framework to zestaw technologii ADO.NET, obsługujące opracowywanie aplikacji zorientowanych na dane. Framework ten pozwala modelować konkretne jednostki, relację czy też logikę działania bazy danych. Obsługuję wiele systemów magazynowania danych takich jak na przykład MySQL, który to został przez nas wybrany do realizacji projektu. Całość jest konfigurowalna z poziomu kodu co jest bardzo wygodnym rozwiązaniem. Pozwala deweloperom na współpracę z danymi w postaci obiektów. Model fizyczny jest rafinowany przez administratorów bazy danych w celu zwiększenia wydajności, ale programiści piszący kod aplikacji przede wszystkim zawężają się do pracy z modelem logicznym, pisząc zapytania SQL i wywołując procedury składowane. Modele domen są zwykle używane jako narzędzie do przechwytywania i komunikowania się z wymaganiami aplikacji, często tak jak w przypadku diagramów obojętnych, które są wyświetlane i omówione w wczesnych etapach projektu, a następnie porzucone. Wiele zespołów programistycznych pomija Tworzenie modelu koncepcyjnego i rozpoczyna się od określenia tabel, kolumn i kluczy w relacyjnej bazie danych.\newline
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{entity}
+	\caption{Architektura Entity Framework do uzyskania dostępu do danych}
+	\label{fig:entity}
+\end{figure}
+
+
 \subsection{SignalR} 			%kurek
+
+\hspace*{0.7cm} Biblioteka dla dewelpoarów ASP.NET, która przyśpiesza proces dodawania funkcji sieci web w czasie rzeczywistym do aplikacji. Często wykorzystuje się tą bibliotekę w czatach internetowych, lecz może ona o wiele więcej. SignalR może być używany też w takich aplikacjach jak pulpity nawigacyjne, aplikacje do monitorowania czy formularze działające w czasie rzeczywistym. Biblioteka umożliwia również zupełnie nowe typy aplikacji internetowych, które wymagają aktualizacji wysokiej częstotliwości z serwera, na przykład gier w czasie rzeczywistym.
+Komunikacja między stroną a serwerem odbywa się poprzez tak zwane Hub'y. Bardzo dobrze ukazuje to rysunek poniżej. \newline
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{signalr}
+	\caption{SignalR przykład działania}
+	\label{fig:signalr}
+\end{figure}
+
 \subsection{MySql} 				%ja
+
+\hspace*{0.7cm} Baza danych rozwijana przez firmę Oracle. MySql jest to otwarto źródłowy system zarządzania relacyjnymi bazami danych. System ten obsługuję język zapytań SQL, który służy do pisania zapytań do tej bazy. MySql jest relacyjną bazą danych. Model relacyjny w prosty i intuicyjny sposób przedstawia dane w tabelach. Każdy wiersz w tabeli jest rekordem z unikatowym identyfikatorem zwanym kluczem. Kolumny tabeli zawierają atrybuty danych, a każdy rekord zawiera zwykle wartość dla każdego atrybutu, co ułatwia ustalenie relacji między poszczególnymi elementami danymi.\newline
+ 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{mysql-logo}
+	\caption{Logo MySQL}
+	\label{fig:mysql-logo}
+\end{figure}
+
+\newpage
 \subsection{Angular} 			%kurek
+
+\hspace*{0.7cm} Otwarto źródłowy framework JavaScript, zaprojektowany i napisany przez inżynierów z Google. Ich celem było zrewolucjonizowanie projektowania części wizualnej stron internetowych. Szybko zyskał popularność wśród programistów JavaScript, którzy zaczęli odstawiać go na rzecz jQuery. Jego największą zaletą oraz najbardziej rozpoznawalną cechą jest integracja z atrybutami HTML. Framework ten umożliwia proste wdrożenie wzorca MVC(Model-View-Controller), dzięki czemu testowanie jak i rozwój aplikacji nie sprawia wielu problemów.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{AngularJS_logo}
+	\caption{Logo Angular}
+	\label{fig:angularjslogo}
+\end{figure}
+
 
 \section{Projekt}
 
 \subsection{Struktura projektu}			%razem
+\subsection{Diagram Gantta}				%razem
+
+\hspace*{0.7cm} Diagram Gantta dla naszego projektu przedstawia się następująco:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramGantta}
+	\caption{Diagram Gantta Live Chat}
+	\label{fig:diagramgantta}
+\end{figure}
+
+
 \subsection{Use Cases}					%razem
 \subsection{Struktura bazy danych}  	%ja
 \subsection{Komuniakcja z web servicem} %kurek
