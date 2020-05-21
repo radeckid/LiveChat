@@ -1,11 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.3.31)  20 MAY 2020 19:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.5.18)  21 MAY 2020 23:25
 entering extended mode
 **./dokument_dotnet_projekt_Damian_Radecki.tex
 (dokument_dotnet_projekt_Damian_Radecki.tex
 LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-03-06> (D:\Programy\MiTeX\tex/latex/base\article.cls
+L3 programming layer <2020-05-15>
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(D:\Programy\MiTeX\tex/latex/base\size12.clo
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size12.clo"
 File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
 \c@part=\count167
@@ -19,110 +20,127 @@ File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
-)
-(D:\Programy\MiTeX\tex/latex/base\inputenc.sty
+) ("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
+y"
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 )
-(D:\Programy\MiTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
+sty"
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
-(D:\Programy\MiTeX\tex/generic/ltxcmds\ltxcmds.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
+sty"
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-(D:\Programy\MiTeX\tex/generic/iftex\iftex.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 )
-(D:\Programy\MiTeX\tex/latex/pdftexcmds\pdftexcmds.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
+mds.sty"
 Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(D:\Programy\MiTeX\tex/generic/infwarerr\infwarerr.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
+err.sty"
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(D:\Programy\MiTeX\tex/latex/graphics\keyval.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(D:\Programy\MiTeX\tex/generic/kvsetkeys\kvsetkeys.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetk
+eys.sty"
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(D:\Programy\MiTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\kvd
+efinekeys.sty"
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(D:\Programy\MiTeX\tex/generic/pdfescape\pdfescape.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pdfescape\pdfesc
+ape.sty"
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(D:\Programy\MiTeX\tex/latex/hycolor\hycolor.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hycolor\hycolor.st
+y"
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(D:\Programy\MiTeX\tex/latex/letltxmacro\letltxmacro.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/letltxmacro\letltx
+macro.sty"
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-(D:\Programy\MiTeX\tex/latex/auxhook\auxhook.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/auxhook\auxhook.st
+y"
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(D:\Programy\MiTeX\tex/latex/kvoptions\kvoptions.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoption
+s.sty"
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
 \@linkdim=\dimen135
 \Hy@linkcounter=\count175
 \Hy@pagecounter=\count176
 
-(D:\Programy\MiTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.de
+f"
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(D:\Programy\MiTeX\tex/generic/intcalc\intcalc.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/intcalc\intcalc.
+sty"
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(D:\Programy\MiTeX\tex/generic/etexcmds\etexcmds.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/etexcmds\etexcmd
+s.sty"
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count177
-Package hyperref Info: Hyper figures OFF on input line 4547.
-Package hyperref Info: Link nesting OFF on input line 4552.
-Package hyperref Info: Hyper index ON on input line 4555.
-Package hyperref Info: Plain pages OFF on input line 4562.
-Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4800.
+Package hyperref Info: Bookmarks ON on input line 4717.
 \c@Hy@tempcnt=\count178
-
-(D:\Programy\MiTeX\tex/latex/url\url.sty
+ ("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5159.
+LaTeX Info: Redefining \url on input line 5076.
 \XeTeXLinkMargin=\dimen136
 
-(D:\Programy\MiTeX\tex/generic/bitset\bitset.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bitset\bitset.st
+y"
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(D:\Programy\MiTeX\tex/generic/bigintcalc\bigintcalc.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bigintcalc\bigin
+tcalc.sty"
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
 \Fld@menulength=\count179
 \Field@Width=\dimen137
 \Fld@charsize=\dimen138
-Package hyperref Info: Hyper figures OFF on input line 6430.
-Package hyperref Info: Link nesting OFF on input line 6435.
-Package hyperref Info: Hyper index ON on input line 6438.
-Package hyperref Info: backreferencing OFF on input line 6445.
-Package hyperref Info: Link coloring OFF on input line 6450.
-Package hyperref Info: Link coloring with OCG OFF on input line 6455.
-Package hyperref Info: PDF/A mode OFF on input line 6460.
-LaTeX Info: Redefining \ref on input line 6500.
-LaTeX Info: Redefining \pageref on input line 6504.
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
 
-(D:\Programy\MiTeX\tex/generic/atbegshi\atbegshi.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/atbegshi\atbegsh
+i.sty"
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
 \Hy@abspage=\count180
@@ -131,20 +149,24 @@ Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(D:\Programy\MiTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex.d
+ef"
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
 
-(D:\Programy\MiTeX\tex/latex/atveryend\atveryend.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/atveryend\atveryen
+d.sty"
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
 )
 \Fld@listcount=\count183
 \c@bookmark@seq@number=\count184
 
-(D:\Programy\MiTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/rerunfilecheck\rer
+unfilecheck.sty"
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(D:\Programy\MiTeX\tex/generic/uniquecounter\uniquecounter.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/uniquecounter\un
+iquecounter.sty"
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -152,12 +174,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip49
 )
-(D:\Programy\MiTeX\tex/latex/polski\polski.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/polski\polski.sty"
 Package: polski 2017/05/04 v1.3.4 Polish language package
-
    Inputenc package detected. Catcodes not changed.
    Switching to Polish text encoding and Polish maths fonts.
-(D:\Programy\MiTeX\tex/latex/base\ot4enc.def
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ot4enc.def"
 File: ot4enc.def 2020/02/11 v2.0o Standard LaTeX file
 Now handling font encoding OT4 ...
 ... no UTF-8 mapping file for font encoding OT4
@@ -165,7 +186,7 @@ Now handling font encoding OT4 ...
 LaTeX Font Info:    Trying to load font information for OT4+cmr on input line 3
 60.
 
-(D:\Programy\MiTeX\tex/latex/polski\ot4cmr.fd
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/polski\ot4cmr.fd"
 File: ot4cmr.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
@@ -200,27 +221,32 @@ LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> OMS/plsy/b/n on input line 360.
 )
-(D:\Programy\MiTeX\tex/latex/graphics\graphicx.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
+sty"
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(D:\Programy\MiTeX\tex/latex/graphics\graphics.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
+sty"
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
-(D:\Programy\MiTeX\tex/latex/graphics\trig.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(D:\Programy\MiTeX\tex/latex/graphics-cfg\graphics.cfg
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
+ics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 
-(D:\Programy\MiTeX\tex/latex/graphics-def\pdftex.def
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
+x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
 )
-(D:\Programy\MiTeX\tex/latex/listings\listings.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
+sty"
 \lst@mode=\count185
 \lst@gtempboxa=\box45
 \lst@token=\toks18
@@ -234,22 +260,25 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \lst@lineno=\count190
 \lst@maxwidth=\dimen144
 
-(D:\Programy\MiTeX\tex/latex/listings\lstmisc.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmisc.s
+ty"
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 \c@lstnumber=\count191
 \lst@skipnumbers=\count192
 \lst@framebox=\box46
 )
-(D:\Programy\MiTeX\tex/latex/listings\listings.cfg
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
+cfg"
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-(D:\Programy\MiTeX\tex/latex/algorithms\algorithm.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorit
+hm.sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(D:\Programy\MiTeX\tex/latex/float\float.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count193
 \float@exts=\toks19
@@ -257,13 +286,14 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks20
 \@floatcapt=\box48
 )
-(D:\Programy\MiTeX\tex/latex/base\ifthen.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks21
 \c@algorithm=\count194
 )
-(D:\Programy\MiTeX\tex/latex/algorithms\algorithmic.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorit
+hmic.sty"
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count195
 \c@ALC@line=\count196
@@ -272,10 +302,12 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip50
 \algorithmicindent=\skip51
 )
-(D:\Programy\MiTeX\tex/latex/amsfonts\amssymb.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.s
+ty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(D:\Programy\MiTeX\tex/latex/amsfonts\amsfonts.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.
+sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks22
 \symAMSa=\mathgroup4
@@ -284,7 +316,8 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(D:\Programy\MiTeX\tex/latex/tools\multicol.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\multicol.sty
+"
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count199
 \mult@box=\box49
@@ -354,8 +387,9 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \colbreak@box=\box94
 \mc@col@check@num=\count274
 )
-(D:\Programy\MiTeX\tex/latex/fancyvrb\fancyvrb.sty
-Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyvrb\fancyvrb.
+sty"
+Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
 \FV@CodeLineNo=\count275
 \FV@InFile=\read2
 \FV@TabBox=\box95
@@ -363,20 +397,22 @@ Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
 \FV@StepNumber=\count277
 \FV@OutFile=\write3
 )
-(D:\Programy\MiTeX\tex/latex/graphics\color.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\color.sty
+"
 Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
 
-(D:\Programy\MiTeX\tex/latex/graphics-cfg\color.cfg
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
+.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-(D:\Programy\MiTeX\tex/latex/l3backend\l3backend-pdfmode.def
-File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
+d-pdfmode.def"
+File: l3backend-pdfmode.def 2020-05-05 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count278
 \l__pdf_internal_box=\box96
-)
-(dokument_dotnet_projekt_Damian_Radecki.aux)
+) (dokument_dotnet_projekt_Damian_Radecki.aux)
 \openout1 = `dokument_dotnet_projekt_Damian_Radecki.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -400,13 +436,16 @@ LaTeX Font Info:    ... okay on input line 58.
 \AtBeginShipoutBox=\box97
 Package hyperref Info: Link coloring OFF on input line 58.
 
-(D:\Programy\MiTeX\tex/latex/hyperref\nameref.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
+ty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
-(D:\Programy\MiTeX\tex/latex/refcount\refcount.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/refcount\refcount.
+sty"
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(D:\Programy\MiTeX\tex/generic/gettitlestring\gettitlestring.sty
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/generic/gettitlestring\g
+ettitlestring.sty"
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count279
@@ -414,14 +453,14 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 58.
 LaTeX Info: Redefining \pageref on input line 58.
 LaTeX Info: Redefining \nameref on input line 58.
-
-(dokument_dotnet_projekt_Damian_Radecki.out)
+ (dokument_dotnet_projekt_Damian_Radecki.out)
 (dokument_dotnet_projekt_Damian_Radecki.out)
 \@outlinefile=\write4
 \openout4 = `dokument_dotnet_projekt_Damian_Radecki.out'.
 
 
-(D:\Programy\MiTeX\tex/context/base/mkii\supp-pdf.mkii
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
+df.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count280
 \scratchdimen=\dimen154
@@ -434,30 +473,30 @@ LaTeX Info: Redefining \nameref on input line 58.
 \MPnumerator=\count284
 \makeMPintoPDFobject=\count285
 \everyMPtoPDFconversion=\toks24
-) (D:\Programy\MiTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+)
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epsto
+pdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
 \c@lstlisting=\count286
-
-(dokument_dotnet_projekt_Damian_Radecki.toc
+ (dokument_dotnet_projekt_Damian_Radecki.toc
 LaTeX Font Info:    Trying to load font information for OML+plm on input line 2
 .
 
-(D:\Programy\MiTeX\tex/latex/polski\omlplm.fd
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/polski\omlplm.fd"
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Trying to load font information for OMS+plsy on input line 
 2.
-
-(D:\Programy\MiTeX\tex/latex/polski\omsplsy.fd
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/polski\omsplsy.fd"
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Trying to load font information for OMX+plex on input line 
 2.
-
-(D:\Programy\MiTeX\tex/latex/polski\omxplex.fd
+ ("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/polski\omxplex.fd
+"
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
@@ -468,12 +507,11 @@ LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <5> on input line 2.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 
-(D:\Programy\MiTeX\tex/latex/amsfonts\umsa.fd
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
-
-(D:\Programy\MiTeX\tex/latex/amsfonts\umsb.fd
+("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write5
@@ -481,7 +519,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1
 
-{C:/Users/damia/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/ditri/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (dokument_dotnet_projekt_Damian_Radecki.lol)
 \tf@lol=\write6
 \openout6 = `dokument_dotnet_projekt_Damian_Radecki.lol'.
@@ -567,65 +605,143 @@ File: AngularJS_logo.png Graphic file (type png)
 <use AngularJS_logo.png>
 Package pdftex.def Info: AngularJS_logo.png  used on input line 210.
 (pdftex.def)             Requested size: 338.5863pt x 90.12653pt.
-<diagramGantta.png, id=241, 711.4078pt x 425.33907pt>
-File: diagramGantta.png Graphic file (type png)
-<use diagramGantta.png>
-Package pdftex.def Info: diagramGantta.png  used on input line 225.
-(pdftex.def)             Requested size: 483.69684pt x 289.20076pt.
+<diagramProjektu.png, id=241, 610.6815pt x 407.121pt>
+File: diagramProjektu.png Graphic file (type png)
+<use diagramProjektu.png>
+Package pdftex.def Info: diagramProjektu.png  used on input line 224.
+(pdftex.def)             Requested size: 338.5863pt x 225.73119pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 269.
+<diagramGantta.png, id=242, 711.4078pt x 425.33907pt>
+File: diagramGantta.png Graphic file (type png)
+<use diagramGantta.png>
+Package pdftex.def Info: diagramGantta.png  used on input line 235.
+(pdftex.def)             Requested size: 386.95894pt x 231.36061pt.
 [6pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.269 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.6}) has been already used, duplicate ignored
+l.238 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.269 \end{document}
-                     <./mysql-logo.jpg> <./AngularJS_logo.png>] [7pdfTeX warnin
-g (ext4): destination with the same identifier (name{figure.7}) has been alread
-y used, duplicate ignored
+l.238 \end{figure}
+                   <./mysql-logo.jpg> <./AngularJS_logo.png>]
+<usecase.png, id=250, 654.94687pt x 452.4403pt>
+File: usecase.png Graphic file (type png)
+<use usecase.png>
+Package pdftex.def Info: usecase.png  used on input line 245.
+(pdftex.def)             Requested size: 338.5863pt x 233.89648pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.269 \end{document}
-                     <./diagramGantta.png>] [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 269.
+l.252 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.252 
+       <./diagramProjektu.png (PNG copy)> <./diagramGantta.png>]
+<diagrambazydanycj.png, id=259, 649.67719pt x 505.13719pt>
+File: diagrambazydanycj.png Graphic file (type png)
+<use diagrambazydanycj.png>
+Package pdftex.def Info: diagrambazydanycj.png  used on input line 255.
+(pdftex.def)             Requested size: 338.5863pt x 263.25864pt.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.261 \subsection
+                 {Komunikacja z web serwisem} %kurekpdfTeX warning (ext4): dest
+ination with the same identifier (name{figure.10}) has been already used, dupli
+cate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.261 \subsection
+                 {Komunikacja z web serwisem} %kurek <./usecase.png (PNG copy)>
+ <./diagrambazydanycj.png (PNG copy)>]
+<komunikacjazwebserwisem.png, id=266, 761.09344pt x 543.53062pt>
+File: komunikacjazwebserwisem.png Graphic file (type png)
+<use komunikacjazwebserwisem.png>
+Package pdftex.def Info: komunikacjazwebserwisem.png  used on input line 267.
+(pdftex.def)             Requested size: 338.5863pt x 241.80815pt.
+<C:/Users/ditri/Downloads/DiagramKlas(2).jpg, id=267, 1713.40125pt x 1760.5775p
+t>
+File: C:/Users/ditri/Downloads/DiagramKlas(2).jpg Graphic file (type jpg)
+<use C:/Users/ditri/Downloads/DiagramKlas(2).jpg>
+Package pdftex.def Info: C:/Users/ditri/Downloads/DiagramKlas(2).jpg  used on i
+nput line 278.
+(pdftex.def)             Requested size: 483.69684pt x 497.01483pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 316.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.316 \end{document}
+                     <./komunikacjazwebserwisem.png (PNG copy)>] [10pdfTeX warn
+ing (ext4): destination with the same identifier (name{figure.12}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.316 \end{document}
+                     <C:/Users/ditri/Downloads/DiagramKlas(2).jpg>] [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 316.
 
 (dokument_dotnet_projekt_Damian_Radecki.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 269.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 269.
-Package rerunfilecheck Info: File `dokument_dotnet_projekt_Damian_Radecki.out' 
-has not changed.
-(rerunfilecheck)             Checksum: 1E3FF9A6E0892098A89D2F09EE418FF7;2596.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 269.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 316.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 316.
+
+
+Package rerunfilecheck Warning: File `dokument_dotnet_projekt_Damian_Radecki.ou
+t' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `dokument_dotnet_projekt_Damian_Rade
+cki.out':
+(rerunfilecheck)             Before: BFC85CA53CE05CE9369C21C716253071;2596
+(rerunfilecheck)             After:  F516066B22953FD9C5524FDA2FACF3FE;2596.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 316.
  ) 
 Here is how much of TeX's memory you used:
- 8200 strings out of 480931
- 120694 string characters out of 2914273
- 401035 words of memory out of 3000000
- 23856 multiletter control sequences out of 15000+200000
+ 8250 strings out of 480799
+ 126652 string characters out of 2895784
+ 400785 words of memory out of 3000000
+ 24031 multiletter control sequences out of 15000+200000
  542610 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,6n,36p,1258b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/Programy/MiTeX/fonts/enc/dvips/pl/plrm.enc}{D:/Programy/MiTeX/fonts/enc/d
-vips/pl/plit.enc}{D:/Programy/MiTeX/fonts/enc/dvips/pl/plsc.enc}<D:/Programy/Mi
-TeX/fonts/type1/public/pl/plbx10.pfb><D:/Programy/MiTeX/fonts/type1/public/pl/p
-lbx12.pfb><D:/Programy/MiTeX/fonts/type1/public/pl/plcsc10.pfb><D:/Programy/MiT
-eX/fonts/type1/public/pl/plr10.pfb><D:/Programy/MiTeX/fonts/type1/public/pl/plr
-12.pfb><D:/Programy/MiTeX/fonts/type1/public/pl/plr17.pfb><D:/Programy/MiTeX/fo
-nts/type1/public/pl/plti12.pfb>
-Output written on dokument_dotnet_projekt_Damian_Radecki.pdf (8 pages, 307285 b
-ytes).
+ 34i,6n,36p,1258b,341s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/pl/plrm.enc
+}{C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/pl/plit.enc}
+{C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/pl/plsc.enc}<
+C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/pl/plbx10.p
+fb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/pl/plbx
+12.pfb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/pl/
+plcsc10.pfb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/pl/plr10.pfb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/pl/plr12.pfb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/pl/plr17.pfb><C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/pl/plti12.pfb>
+Output written on dokument_dotnet_projekt_Damian_Radecki.pdf (11 pages, 1294287
+ bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 56 named destinations out of 1000 (max. 500000)
- 340 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 

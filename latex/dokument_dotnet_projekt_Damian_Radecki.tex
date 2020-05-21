@@ -147,7 +147,7 @@ konto. Mogą to być zarówno firmy, które chcą komunikować się między sob�
 \section{Użyte technologie}
 
 \subsection{.Net Core} 			%razem
-\hspace*{0.7cm} Popularny, nowoczesny i wydajny framework oparty o otwartoźródłowa implementację, który został wydany w 2016 roku do ogólnego przeznaczenia. Stanowi zestaw bibliotek pozwalający tworzyć wieloplatformowe aplikacje o wysokim stopniu bezpieczeństwa. Framework ten pozwala na pisanie aplikacji przeznaczonych do obliczeń chmurowych, IoT oraz jak w naszym przypadku do pisania web serwisu. 
+\hspace*{0.7cm} Popularny, nowoczesny i wydajny framework oparty o otwartoźródłowa implementację, który został wydany w 2016 roku do ogólnego przeznaczenia. Stanowi zestaw bibliotek pozwalający tworzyć wieloplatformowe aplikacje o wysokim stopniu bezpieczeństwa. Framework ten pozwala na pisanie aplikacji między innymi przeznaczonych do obliczeń chmurowych, IoT oraz jak w naszym przypadku do pisania web serwisu. 
 
 \begin{figure}[h]
 	\centering
@@ -215,26 +215,73 @@ Komunikacja między stroną a serwerem odbywa się poprzez tak zwane Hub'y. Bard
 
 \section{Projekt}
 
-\subsection{Struktura projektu}			%razem
+\subsection{Struktura projektu} %razem
+
+Diagram pokązujący architekturę całego projektu opisuje główne komponenty i występujące między nimi połączenia. Strona internetowa napisana w Angularze jest podłączona bezpośrednio z signalR i web serwisem. Miedzy nim występują połączenia dwukierunkowe. Z tym pierwszym strona internetowa utrzymuje stałe połączenie, aby zapewnić natychmiastową wymianę danych. Drugi wymieniony komponent odpowiada na zadane żądania. SignalR został wbudowany w web serwis jako integralna część, ale jest traktowany osobno, ponieważ utrzymuje z klientem innego typu połączenie. Między nimi także następuje wymiana danych. Ostatnim komponentem projektu jest baza danych, która jest podłącza tylko do web serwisu. To on stanowi most do pobierania wszelkich zawartych tam informacji. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagramProjektu}
+	\caption{}
+	\label{fig:diagramprojektu}
+\end{figure}
+			
 \subsection{Diagram Gantta}				%razem
 
 \hspace*{0.7cm} Diagram Gantta dla naszego projektu przedstawia się następująco:
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{diagramGantta}
+	\includegraphics[width=0.8\linewidth]{diagramGantta}
 	\caption{Diagram Gantta Live Chat}
 	\label{fig:diagramgantta}
 \end{figure}
 
-
 \subsection{Use Cases}					%razem
+Use case pokazują fukcjonalności projektu z podziałem na rodzaje użytkownik danej aplikacji. W live chat bedziemy wyrózniać dwa rodzaje użytkowników. Będzie to nowy user, który będzie miał możliwość jedynie rejestracji i drugi to będzie już utworzony user, który będzie mógł korzystać ze wszystkich korzyści programu.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{usecase}
+	\caption{}
+	\label{fig:usecase}
+\end{figure}
+
 \subsection{Struktura bazy danych}  	%ja
-\subsection{Komuniakcja z web servicem} %kurek
+Struktura bazy danych jest prosta i czytelna. Dla takiego projektu baza danych jest fundamentem. Musimy mieć miejsce do przechowywania informacji o użytkownikach, relacjach, wiadmościach czy czatach. Tabele opieraja się na relacjach między sobą. Sama struktura w mysql została wygenerowana przez Entity Framework Core, który zrobił w najbardziej optymalny i wydajny sposób.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagrambazydanycj}
+	\caption{}
+	\label{fig:diagrambazydanycj}
+\end{figure}
+
+
+\subsection{Komunikacja z web serwisem} %kurek
+Komunikacja z web serwisem została podzielona na część dla każdego usera i część tylko dla zalogowanych.
+Po zalogowaniu wytwarzany jest token w User Controller i przesyłany z powrotem do klienta. Takowy token jest wykorzystywany do autoryzacji podczas dostępu do pozostałych kontrolerów. W przypadku SignalR, tylko zalogowani użytkownicy mogą się podłączyć. Wywoływana jest metoda RPC do walidacji użytkownika. Jest to druga część autoryzacji co czyni ją dwuetapową. Ta część polega na sprawdzeniu czy email zawarty w tokenie zgadza się z id usera. Wywoływana jest wówczas baza danych do pobrania emailu zawartego w rekodzie o danym id i przyrównanie tej wartości z wartością email zawartą w tokenie. Prosty diagram komunikacji z web serwisem jest następujący.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{komunikacjazwebserwisem}
+	\caption{}
+	\label{fig:komunikacjazwebserwisem}
+\end{figure}
+
+
+\subsection{Diagram klas}
+Diagram klas przedstawia od strony czysto technicznej połączenia między poszczególnymi klasami, interfejsami czy typami prostymi. Pozwala zauważyć pewne założenia, schematy, które ułatwią implementowanie całego mechanizmu, aby uniknąć powtarzania się kodu czy zminimalizować ilość użytych linijek. 
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=1\linewidth]{C:/Users/ditri/Downloads/DiagramKlas(2)}
+	\caption{}
+	\label{fig:diagramklas2}
+\end{figure}
 
 \section{Implementacja}
 
-\subsection{Diagram klas}					%razem - chyba
 \subsection{Modele bazy danych}				%ja - enity framework
 \subsection{Modele DTO} 					%kurek
 \subsection{Implementacja kontrolerów}		%razem

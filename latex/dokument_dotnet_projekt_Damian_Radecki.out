@@ -13,13 +13,13 @@
 \BOOKMARK [2][-]{subsection.3.2}{Diagram Gantta}{section.3}% 13
 \BOOKMARK [2][-]{subsection.3.3}{Use Cases}{section.3}% 14
 \BOOKMARK [2][-]{subsection.3.4}{Struktura bazy danych}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.5}{Komuniakcja z web servicem}{section.3}% 16
-\BOOKMARK [1][-]{section.4}{Implementacja}{}% 17
-\BOOKMARK [2][-]{subsection.4.1}{Diagram klas}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.2}{Modele bazy danych}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.3}{Modele DTO}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.4}{Implementacja kontroler\363w}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.5}{Problemy i ich rozwiazania}{section.4}% 22
+\BOOKMARK [2][-]{subsection.3.5}{Komunikacja z web serwisem}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.6}{Diagram klas}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{Implementacja}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Modele bazy danych}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Modele DTO}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Implementacja kontroler\363w}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.4}{Problemy i ich rozwiazania}{section.4}% 22
 \BOOKMARK [1][-]{section.5}{Testy}{}% 23
 \BOOKMARK [2][-]{subsection.5.1}{Testy jednostkowe}{section.5}% 24
 \BOOKMARK [2][-]{subsection.5.2}{Testy integracyjne}{section.5}% 25

@@ -6,7 +6,6 @@ namespace LiveChatRegisterLogin.Data
 {
     public interface IUserRepository
     {
-
         Task<User> Login(string email, string password);
         Task<User> Register(User user, string password);
         Task<ICollection<User>> GetAllFriend(int userId);
