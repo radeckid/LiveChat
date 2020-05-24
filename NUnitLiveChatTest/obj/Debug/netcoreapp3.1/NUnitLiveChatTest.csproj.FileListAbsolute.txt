@@ -1,0 +1,4 @@
+D:\Programowanie\CSharpProjects\Live_Chat_Project\NUnitLiveChatTest\obj\Debug\netcoreapp3.1\NUnitLiveChatTest.csprojAssemblyReference.cache
+D:\Programowanie\CSharpProjects\Live_Chat_Project\NUnitLiveChatTest\obj\Debug\netcoreapp3.1\NUnitLiveChatTest.csproj.CoreCompileInputs.cache
+D:\Programowanie\CSharpProjects\Live_Chat_Project\NUnitLiveChatTest\obj\Debug\netcoreapp3.1\NUnitLiveChatTest.AssemblyInfoInputs.cache
+D:\Programowanie\CSharpProjects\Live_Chat_Project\NUnitLiveChatTest\obj\Debug\netcoreapp3.1\NUnitLiveChatTest.AssemblyInfo.cs
