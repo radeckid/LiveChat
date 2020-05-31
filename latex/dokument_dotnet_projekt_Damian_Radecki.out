@@ -19,7 +19,7 @@
 \BOOKMARK [2][-]{subsection.4.1}{Modele bazy danych}{section.4}% 19
 \BOOKMARK [2][-]{subsection.4.2}{Modele DTO}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.3}{Implementacja kontroler\363w}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.4}{Problemy i ich rozwiazania}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.4}{Implementacja SignalR}{section.4}% 22
 \BOOKMARK [1][-]{section.5}{Testy}{}% 23
 \BOOKMARK [2][-]{subsection.5.1}{Testy jednostkowe}{section.5}% 24
 \BOOKMARK [2][-]{subsection.5.2}{Testy integracyjne}{section.5}% 25

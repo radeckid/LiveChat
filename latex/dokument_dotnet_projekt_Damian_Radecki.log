@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.5.18)  25 MAY 2020 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.5.18)  31 MAY 2020 16:35
 entering extended mode
 **./dokument_dotnet_projekt_Damian_Radecki.tex
 (dokument_dotnet_projekt_Damian_Radecki.tex
@@ -527,12 +527,17 @@ Overfull \vbox (5.89963pt too high) has occurred while \output is active []
 [1
 
 {C:/Users/ditri/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(dokument_dotnet_projekt_Damian_Radecki.lol)
+(dokument_dotnet_projekt_Damian_Radecki.lol
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+ [][] [][]\OT4/cmr/m/n/10 Implementacja kla-sy Re-la-tion-De-le- 
+ []
+
+)
 \tf@lol=\write6
 \openout6 = `dokument_dotnet_projekt_Damian_Radecki.lol'.
 
  [2]
-<dotnet5_platform.png, id=251, 349.305pt x 215.80624pt>
+<dotnet5_platform.png, id=323, 349.305pt x 215.80624pt>
 File: dotnet5_platform.png Graphic file (type png)
 <use dotnet5_platform.png>
 Package pdftex.def Info: dotnet5_platform.png  used on input line 154.
@@ -542,23 +547,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--160
 
  []
 
-<net-Core-1.png, id=252, 868.24374pt x 590.205pt>
-File: net-Core-1.png Graphic file (type png)
-<use net-Core-1.png>
-Package pdftex.def Info: net-Core-1.png  used on input line 163.
-(pdftex.def)             Requested size: 338.5863pt x 230.16101pt.
 [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.167 
+l.160 
        <./dotnet5_platform.png>]
+<net-Core-1.png, id=330, 868.24374pt x 590.205pt>
+File: net-Core-1.png Graphic file (type png)
+<use net-Core-1.png>
+Package pdftex.def Info: net-Core-1.png  used on input line 163.
+(pdftex.def)             Requested size: 338.5863pt x 230.16101pt.
+
 Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-<entity.png, id=259, 116.1138pt x 108.405pt>
+<entity.png, id=331, 116.1138pt x 108.405pt>
 File: entity.png Graphic file (type png)
 <use entity.png>
 Package pdftex.def Info: entity.png  used on input line 174.
@@ -574,7 +580,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 182--184
 
  []
 
-<signalr.png, id=266, 448.67625pt x 420.06938pt>
+<signalr.png, id=338, 448.67625pt x 420.06938pt>
 File: signalr.png Graphic file (type png)
 <use signalr.png>
 Package pdftex.def Info: signalr.png  used on input line 187.
@@ -590,7 +596,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
 
-<mysql-logo.jpg, id=273, 767.86874pt x 320.69812pt>
+<mysql-logo.jpg, id=345, 767.86874pt x 320.69812pt>
 File: mysql-logo.jpg Graphic file (type jpg)
 <use mysql-logo.jpg>
 Package pdftex.def Info: mysql-logo.jpg  used on input line 198.
@@ -608,12 +614,12 @@ l.206
                                                   \fi \fi 
 l.206 
        <./signalr.png> <./mysql-logo.jpg>]
-<AngularJS_logo.png, id=281, 697.60625pt x 185.69376pt>
+<AngularJS_logo.png, id=353, 697.60625pt x 185.69376pt>
 File: AngularJS_logo.png Graphic file (type png)
 <use AngularJS_logo.png>
 Package pdftex.def Info: AngularJS_logo.png  used on input line 209.
 (pdftex.def)             Requested size: 338.5863pt x 90.12653pt.
-<diagramProjektu.png, id=282, 610.6815pt x 407.121pt>
+<diagramProjektu.png, id=354, 610.6815pt x 407.121pt>
 File: diagramProjektu.png Graphic file (type png)
 <use diagramProjektu.png>
 Package pdftex.def Info: diagramProjektu.png  used on input line 223.
@@ -625,12 +631,12 @@ Package pdftex.def Info: diagramProjektu.png  used on input line 223.
                                                   \fi \fi 
 l.227 			
           <./AngularJS_logo.png>]
-<diagramGantta.png, id=290, 711.4078pt x 425.33907pt>
+<diagramGantta.png, id=362, 711.4078pt x 425.33907pt>
 File: diagramGantta.png Graphic file (type png)
 <use diagramGantta.png>
 Package pdftex.def Info: diagramGantta.png  used on input line 234.
 (pdftex.def)             Requested size: 386.95894pt x 231.36061pt.
-<usecase.png, id=291, 654.94687pt x 452.4403pt>
+<usecase.png, id=363, 654.94687pt x 452.4403pt>
 File: usecase.png Graphic file (type png)
 <use usecase.png>
 Package pdftex.def Info: usecase.png  used on input line 244.
@@ -648,7 +654,7 @@ l.248
                                                   \fi \fi 
 l.248 
        <./diagramProjektu.png (PNG copy)> <./diagramGantta.png>]
-<diagrambazydanycj.png, id=299, 649.67719pt x 505.13719pt>
+<diagrambazydanycj.png, id=371, 649.67719pt x 505.13719pt>
 File: diagrambazydanycj.png Graphic file (type png)
 <use diagrambazydanycj.png>
 Package pdftex.def Info: diagrambazydanycj.png  used on input line 254.
@@ -666,12 +672,12 @@ l.263
                                                   \fi \fi 
 l.263 
        <./usecase.png (PNG copy)> <./diagrambazydanycj.png (PNG copy)>]
-<komunikacjazwebserwisem.png, id=306, 761.09344pt x 543.53062pt>
+<komunikacjazwebserwisem.png, id=378, 761.09344pt x 543.53062pt>
 File: komunikacjazwebserwisem.png Graphic file (type png)
 <use komunikacjazwebserwisem.png>
 Package pdftex.def Info: komunikacjazwebserwisem.png  used on input line 266.
 (pdftex.def)             Requested size: 483.69684pt x 345.43668pt.
-<DiagramKlas.jpg, id=307, 1715.40875pt x 1762.585pt>
+<DiagramKlas.jpg, id=379, 1715.40875pt x 1762.585pt>
 File: DiagramKlas.jpg Graphic file (type jpg)
 <use DiagramKlas.jpg>
 Package pdftex.def Info: DiagramKlas.jpg  used on input line 277.
@@ -726,109 +732,237 @@ Overfull \hbox (30.95227pt too wide) in paragraph at lines 340--341
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+[13] [14] [15] [16]
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
+93.
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
-
- []
-
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-69.
 ("C:\Users\ditri\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omlcmr.fd"
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 369.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 593.
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+[17]
+Overfull \hbox (2.75232pt too wide) in paragraph at lines 614--615
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (2.75232pt too wide) in paragraph at lines 655--656
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[18]
+Overfull \hbox (9.8023pt too wide) in paragraph at lines 665--666
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 684--685
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--403
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
 
  []
 
-<hmac_signature.png, id=371, 249.733pt x 29.711pt>
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 701--702
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--724
+
+ []
+
+<hmac_signature.png, id=556, 249.733pt x 29.711pt>
 File: hmac_signature.png Graphic file (type png)
 <use hmac_signature.png>
-Package pdftex.def Info: hmac_signature.png  used on input line 406.
+Package pdftex.def Info: hmac_signature.png  used on input line 727.
 (pdftex.def)             Requested size: 338.5863pt x 40.28398pt.
-[14] [15pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.13}) has been already used, duplicate ignored
+[20pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.441 ...on={Dodanie bazy danych do konfiguracji}]
-                                                   <./hmac_signature.png>]
-Overfull \hbox (30.95227pt too wide) in paragraph at lines 445--446
+l.733 
+       <./hmac_signature.png>] [21]
+Overfull \hbox (30.95227pt too wide) in paragraph at lines 766--767
 [][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
 
  []
 
 
-Overfull \hbox (9.8023pt too wide) in paragraph at lines 455--456
+Overfull \hbox (9.8023pt too wide) in paragraph at lines 776--777
 [][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 781--782
 
  []
 
 
-Overfull \hbox (136.70209pt too wide) in paragraph at lines 467--468
+Overfull \hbox (136.70209pt too wide) in paragraph at lines 788--789
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.8523pt too wide) in paragraph at lines 472--473
+Overfull \hbox (16.8523pt too wide) in paragraph at lines 793--794
 [][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (52.10223pt too wide) in paragraph at lines 474--475
+Overfull \hbox (52.10223pt too wide) in paragraph at lines 795--796
 [][][][][][][][][][][][] 
  []
 
-[16]
-Overfull \hbox (16.8523pt too wide) in paragraph at lines 490--491
+[22]
+Overfull \hbox (16.8523pt too wide) in paragraph at lines 811--812
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 527--528
+
+Underfull \hbox (badness 10000) in paragraph at lines 848--849
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 570.
-[18] [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 570.
+[23] [24]
+<FirstPage.png, id=688, 725.71124pt x 453.19313pt>
+File: FirstPage.png Graphic file (type png)
+<use FirstPage.png>
+Package pdftex.def Info: FirstPage.png  used on input line 885.
+(pdftex.def)             Requested size: 338.5863pt x 211.44489pt.
+<StronaUżytkownika.png, id=689, 1342.2647pt x 708.39656pt>
+File: StronaUżytkownika.png Graphic file (type png)
+<use StronaUżytkownika.png>
+Package pdftex.def Info: StronaUżytkownika.png  used on input line 894.
+(pdftex.def)             Requested size: 338.5863pt x 178.68765pt.
+ [25pdfTeX warning (ext4): destination with the same identifier (name{figure.14
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.900 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.900 
+       <./FirstPage.png> <./StronaUżytkownika.png>] [26]
+Overfull \hbox (16.8523pt too wide) in paragraph at lines 994--995
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1074
+
+ []
+
+[29]
+Overfull \hbox (23.90228pt too wide) in paragraph at lines 1086--1087
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1096
+
+ []
+
+[30]
+Overfull \hbox (242.4519pt too wide) in paragraph at lines 1142--1144
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+<PowiadomieniaUser.png, id=896, 416.55624pt x 754.82pt>
+File: PowiadomieniaUser.png Graphic file (type png)
+<use PowiadomieniaUser.png>
+Package pdftex.def Info: PowiadomieniaUser.png  used on input line 1171.
+(pdftex.def)             Requested size: 338.5863pt x 613.56618pt.
+[31] [32pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.16}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1177 
+        <./PowiadomieniaUser.png>]
+<ProcesTworzeniaNowejRelacji.png, id=936, 588.1975pt x 362.35374pt>
+File: ProcesTworzeniaNowejRelacji.png Graphic file (type png)
+<use ProcesTworzeniaNowejRelacji.png>
+Package pdftex.def Info: ProcesTworzeniaNowejRelacji.png  used on input line 12
+20.
+(pdftex.def)             Requested size: 338.5863pt x 208.584pt.
+ [33] [34pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.17}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1250 	.C
+          onfigureAwait(true); <./ProcesTworzeniaNowejRelacji.png>] [35]
+Overfull \hbox (827.60089pt too wide) in paragraph at lines 1307--1309
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (136.70209pt too wide) in paragraph at lines 1316--1317
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[36]
+Overfull \hbox (9.8023pt too wide) in paragraph at lines 1362--1363
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+[37]
+Overfull \hbox (16.8523pt too wide) in paragraph at lines 1401--1402
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.01898pt too wide) in paragraph at lines 1409--1410
+[]\OT4/cmr/m/n/12 Klasy \OT4/cmr/bx/n/12 Mes-sa-ge-Con-nec-tion-Se-rvi-ce \OT4/
+cmr/m/n/12 oraz \OT4/cmr/bx/n/12 No-ti-fi-ca-tion-Con-nec-tion-Se-rvi-ce \OT4/c
+mr/m/n/12 wsp�l-nie dzie-
+ []
+
+
+Overfull \hbox (2.75232pt too wide) in paragraph at lines 1423--1424
+[][][][][][][][][] 
+ []
+
+[38]
+Overfull \hbox (108.50214pt too wide) in paragraph at lines 1460--1461
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1485.
+[39] [40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1485.
  (dokument_dotnet_projekt_Damian_Radecki.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 570.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 570.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1485.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1485.
+
 Package rerunfilecheck Info: File `dokument_dotnet_projekt_Damian_Radecki.out' 
 has not changed.
-(rerunfilecheck)             Checksum: 84E557EC22F56CAC5A40D09B711F685B;2742.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 570.
+(rerunfilecheck)             Checksum: B1C47FB7BEB49F2270547648A9DD16DC;2737.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1485.
  ) 
 Here is how much of TeX's memory you used:
- 8813 strings out of 480799
- 132294 string characters out of 2895784
- 408828 words of memory out of 3000000
- 24412 multiletter control sequences out of 15000+200000
+ 9395 strings out of 480799
+ 140751 string characters out of 2895784
+ 409055 words of memory out of 3000000
+ 24444 multiletter control sequences out of 15000+200000
  544066 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,6n,36p,1301b,1834s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,6n,36p,1301b,1836s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\ditri\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk>{C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/p
 l/plrm.enc}{C:/Users/ditri/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/pl
@@ -843,10 +977,10 @@ rograms/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Users/ditri/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/pl/plr12.pfb><C:/Users/ditri/AppData/L
 ocal/Programs/MiKTeX 2.9/fonts/type1/public/pl/plr17.pfb><C:/Users/ditri/AppDat
 a/Local/Programs/MiKTeX 2.9/fonts/type1/public/pl/plti12.pfb>
-Output written on dokument_dotnet_projekt_Damian_Radecki.pdf (19 pages, 1097271
+Output written on dokument_dotnet_projekt_Damian_Radecki.pdf (40 pages, 1309839
  bytes).
 PDF statistics:
- 603 PDF objects out of 1000 (max. 8388607)
- 240 named destinations out of 1000 (max. 500000)
- 386 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1382 PDF objects out of 1440 (max. 8388607)
+ 790 named destinations out of 1000 (max. 500000)
+ 406 words of extra memory for PDF output out of 10000 (max. 10000000)
 

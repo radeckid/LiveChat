@@ -348,7 +348,328 @@ public class InvitatationDTO
 
 
 \subsection{Implementacja kontrolerów}		%razem
-\subsection{Problemy i ich rozwiązania}		%razem
+\hspace*{0.7cm} Kontrolery w apliacjach asp.net core opartych o usługi RESTful to próg wejścia do aplikacji ze strony klienta HTTP. Każdy z nich odpowiada za obsługę jednego z modeli aplikacji. Tymi modelami są kontenery na dane, gdzie te dan są tylko przechowywane. Wszystkie operacje na danym modelu są wykonywane w kontrolerze. Od strony protokołu przesyłu danych służą one do przechwytywania i obsługiwania przychodzących żądań i odsłynia odpowiedzi. 
+\hspace*{0.7cm} W aplikacji powstały cztery kontrollery. Są to:
+\begin{enumerate}
+	\item \textbf{UserController} - jego działanie skupia się na rejestrowaniu nowych użytkowników i logowaniu juz isteniejących. W drugim przypadku zwracany jest token przypisany do zalogowanego użytkownika. Za pomocą tego kontrolera można także pobrać wszystkich użytkowników oraz przyjaciół danego użytkownika. Istnieje także opcja sprawdzenia czy dany użytkownik jest przyjaciel z innym.
+	
+	Lista metod:
+	\begin{itemize}
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Users/login
+			\item Typ przyjmowany: UserDTO
+			\item Typ zwracany: LoginResponse
+			\item Status kody:
+				\begin{itemize}
+					\item Sukces - 200
+					\item Niepowodzenie - 400, 401
+				\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Users/register
+			\item Typ przyjmowany: UserDTO
+			\item Typ zwracany: Void
+			\item Status kody: 
+							\begin{itemize}
+				\item Sukces - 201
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Get
+			\item Url: /Users/friends/{userId}
+			\item Typ przyjmowany: Integer
+			\item Typ zwracany: Array<User>
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+		
+		\item 
+		\begin{itemize}
+			\item Metoda: Get
+			\item Url: /Users/friends/{userId}/{friendId}
+			\item Typ przyjmowany: Integer, Integer
+			\item Typ zwracany: Bool
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Get
+			\item Url: /Users/getAll
+			\item Typ przyjmowany: Integer, Integer
+			\item Typ zwracany: Array<Users>
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+		
+	\end{itemize}
+	
+	\item \textbf{MessagesController} - w tym przypadku obsługiwany model to Message, czyli klasa zawierające dane o wiadomości. Kontroler obsługuje wysyłanie wiadomości z wykorzystaniem SignalR. Znajduje się również metoda do pobrania ostatnich dwudziestu wiadmości od wiadomości wysłanej w żądaniu. Kontroler nie posiada funkcji pobrania wszystkich wiadomości, ponieważ byłoby to niewydajne w przypadku dużej ilości danych.
+	
+	Lista metod:
+	\begin{itemize}
+		
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Messages/post
+			\item Typ przyjmowany: MessageDTO
+			\item Typ zwracany: String
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Messages/getLastTwentyMessages
+			\item Typ przyjmowany: GetMessagesDTO
+			\item Typ zwracany: Array<Message>
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400, 404
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+	\item \textbf{NotificationController} - najbardziej rozbudowany kontroler w całej aplikacji. Posiada on funkcjonalności odpowiedzialne za obsługę modelu Notification, który przedstawia powiadomienia. Wykorzystuje on SignalR do wysyłania powiadomień jak i do ich odbierania. Znajdują się w nim metody zwracające wszystkie wysłane i odebrane powiadomienia użytkownika. Tutaj dodaje się zaproszenia oraz usuwa się przyjaciół. Całość zamyka metoda do obsłużenia danego powiadomienia, na przykład zaproszenia można przyjąć po czym następuje stworzenie nowej relacji z czatem dla nowych przyjaciół oraz przygotowanie nowego powiadomienia zwrotnego.
+	
+	Lista metod:
+	\begin{itemize}
+		
+		\item 
+		\begin{itemize}
+			\item Metoda: Get
+			\item Url: /Notification/getAllSent/{userId}
+			\item Typ przyjmowany: Integer
+			\item Typ zwracany: Array<Notification>
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+		
+		\item 
+		\begin{itemize}
+			\item Metoda: Get
+			\item Url: /Notification/getAllReceived/{userId}
+			\item Typ przyjmowany: Integer
+			\item Typ zwracany: Array<Notification>
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Notification/invitation
+			\item Typ przyjmowany: InvitationDTO
+			\item Typ zwracany: String
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Notification/deleteRelation
+			\item Typ przyjmowany: RelationDeletionDTO
+			\item Typ zwracany: Bool
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400, 404
+			\end{itemize}
+		\end{itemize}
+	
+		\item 
+		\begin{itemize}
+			\item Metoda: Post
+			\item Url: /Notification/proccess
+			\item Typ przyjmowany: NotificationDTO
+			\item Typ zwracany: Void
+			\item Status kody: 
+			\begin{itemize}
+				\item Sukces - 200
+				\item Niepowodzenie - 400
+			\end{itemize}
+		\end{itemize}
+
+	\end{itemize}
+
+\item \textbf{ChatController} - obsługiwany model to Chat, który przechowuje informacje na temat wszystkich userów w nim uczęstniczacych jak i wiadomościach znajdujacych się w nim. Wykonywanie są tu operacje pobierania danego czatu oraz danego wszystkich czatów danego użytkownika. Tworzone są tutaj oczywiście czaty, ale tylko grupowe. Czaty przyjacielskie są tworzene w kontrolerze powiadomień. Ostatnią metodą jest pobranie wszystkich użytkowników należących do danego czatu.
+
+Lista metod:
+\begin{itemize}
+	
+	\item 
+	\begin{itemize}
+		\item Metoda: Post
+		\item Url: /Chat/getAll/{id}
+		\item Typ przyjmowany: Integer
+		\item Typ zwracany: Array<ChatDTO>
+		\item Status kody: 
+		\begin{itemize}
+			\item Sukces - 200
+			\item Niepowodzenie - 400
+		\end{itemize}
+	\end{itemize}
+
+	\item 
+	\begin{itemize}
+		\item Metoda: Post
+		\item Url: /Chat/createGroupChat
+		\item Typ przyjmowany: GroupChatDTO
+		\item Typ zwracany: ChatDTO
+		\item Status kody: 
+		\begin{itemize}
+			\item Sukces - 200
+			\item Niepowodzenie - 400
+		\end{itemize}
+	\end{itemize}
+
+	\item 
+	\begin{itemize}
+		\item Metoda: Get
+		\item Url: /Chat/getChatMembers/{id}
+		\item Typ przyjmowany: Integer
+		\item Typ zwracany: Array<User>
+		\item Status kody: 
+		\begin{itemize}
+			\item Sukces - 200
+			\item Niepowodzenie - 400
+		\end{itemize}
+	\end{itemize}
+	
+\end{itemize}
+\end{enumerate}
+
+\hspace*{0.7cm} W każdym kontrolerze używana jest baza danych, ale nie bezpośrednio w nim. Repozytoria obsługują głębszą logikę obsługiwania żadań. Są to klasy do obsługi pewnych powtarzających się lub większych fukcjonalności. Posiadają dostęp do bazy danych, SiganlR oraz serwisów działających w aplikacji. Są skonfigurowane jako jedna instacja dla każdego połączenia. Bezpośrednio w kontrolerach odbywa się walidacja żadań i generowanie odpowiedzi.
+
+\subsection{Implementacja SignalR}	
+\hspace*{0.7cm} Dużym wyzwaniem było zaimplementowanie ciągłego połączenia z klientem. Połączenie HTTP na bazie kontrolerów nie spełnia tego rozwiązania ponieważ jest bezstanowe i działa na zasadzie wysłania żądania i otrzymania odpowiedzi. Najlepszym rozwiązaniem w tym przypadku jest SignalR. Jego implementacja jak i obsługa jest bezproblemowa. Zawiera wszystkie ważne komponenty i fukcjonalności. Jego popularność zawdzięcza wysokiej wydajności i bardzo dobrej osbłudze połączenia. \newline
+\hspace*{0.7cm} SignalR jest frameworkiem ASP.NET ułatwiającym pisanie aplikacji czasu rzeczywistego, czyli takich, gdzie nie trzeba odświeżać przeglądarki. Mechanizmy takie jak WebSocket czy HTML SEE są podstawowym mechnizmem w takich aplikacjach, ale wymagają wparcia od przeglądarki. SignalR zapewnia jeden framework niezależny od przeglądarki. \newline
+\hspace*{0.7cm} SignalR zapewnia dwa typy połączenia: PersistentConnection oraz HubAPI. My skorzystaliśmy z HubAPI, jest prostsze w obsłudze, a równie wydajne jak pierwsze rozwiazanie. Dodatkowo o umożliwia wykonywanie RPC nad połączniem oraz przesyłanie \textit{"strongly typed"} parametrów. \newline
+\hspace*{0.7cm} Po stronie serwera implementacja SignalR dzieli się na 3 Hub's. Pierwszym z nich jest GateHub, który posiada RPC, do weryfikacji połączenia. Jest to drugi stopień autoryzacji użytkownika. Kolejnymi dwoma hubami są klasy odpowiedzialne za wiadomości i notyfikację. Ze względu na wspólne ciało dziedziczą one od klasy BaseHub.
+
+\begin{lstlisting}[caption={Implementacja Klasy BaseHub}]
+
+[Authorize]
+public abstract class BaseHub : Hub
+{
+	protected abstract ServiceTypes Type { get; }
+	
+	private IConnectionService _connectionService;
+	
+	public BaseHub(Func<ServiceTypes, 
+	IConnectionService> servicesResolver)
+	{
+		_connectionService = servicesResolver(Type);
+	}
+	
+	public override Task OnConnectedAsync()
+	{
+		if(int.TryParse(Context.UserIdentifier,
+		 out int userId))
+		{
+			_connectionService.AddConnection
+			(Context.ConnectionId, userId);
+		
+			return base.OnConnectedAsync();
+		}
+	
+		throw new Microsoft.AspNetCore.SignalR
+		.HubException("Cannot parse user id");
+	}
+	
+	public override Task OnDisconnectedAsync(Exception exception)
+	{
+		_connectionService.
+		DisposeConnection(Context.ConnectionId);
+	
+		return base.OnDisconnectedAsync(exception);
+	}
+}
+\end{lstlisting}
+
+\hspace*{0.7cm}Posiadaja one atrybut \textit{[Authorize]}, ponieważ za jego pomocą mogą zwryfikować token danego użytkownika.
+
+\hspace*{0.7cm}Po stronie klienta zostały również zaimplementowane 3 rodzaje hubów. Ważne było zastosowanie wspólnej nazwy dla przesyłanego strumienia. Dzięki niemu połączenia miedzy konkretnymi hubami mogło się udać. Jego autonomiczność wspiera również osobny adres, który trzyba podać aby się połączyć do danego Hub. Każdy z Hub's po stronie klienta to osobny serwis działający w tle.
+
+\begin{lstlisting}[caption={Implementacja SignalR po stronie klienta}]
+
+@Injectable({
+providedIn: 'root'
+})
+export class MessageSignalRService {
+
+	private hubConnection: signalR.HubConnection;
+
+	messageData: Subject<any> = new Subject<any>();
+
+	constructor() { }
+
+	startConnection(token: string) {
+		const options: IHttpConnectionOptions = {
+		accessTokenFactory: () => {
+			return token;
+			}
+		};
+	this.hubConnection = new signalR.HubConnectionBuilder()
+
+	.withUrl('http://localhost:53064/messagechart', options)
+	.build();
+
+	this.hubConnection
+	.start()
+	.then(() => console.log('Connection started'))
+	.catch(err => console.log('Error while starting connection: '
+	 + err));
+	}
+
+	getMessageData(): Observable<any> {
+	return this.messageData.asObservable();
+	}
+
+	addTransferChartDataListener() {
+		console.log('listen');
+		this.hubConnection.on('transferchartdata', (data) => {
+			console.log('Just Received message');
+			this.messageData.next(data[0]);
+		});
+	}
+}
+\end{lstlisting}
+
 
 \section{Testy}
 
@@ -556,10 +877,604 @@ app.UseEndpoints(endpoints =>
 
 %kurek
 \subsection{Strona internetowa opracowana w Angular}
+\hspace*{0.7cm} Strona internetowa powstała w popularnym frameworku Angular. Bazuje on na stworzynej przez Microsoft nakładkę na JavaScript TypeScript. Angular dostarcza deweloperom szeroki zakres możliwości manipulowania zachowaniem elementów wizualnej warstwy aplikacji webowych, które udało się wykorzystać w naszej aplikacji.
+ \hspace*{0.7cm} Aplikację Angular podzieliliśmy na sześć komponentów, które odpowiadają za przechowywanie i obsługę innego rodzaju danych. Wchodzą na stronę wyświetla się nam komponent \textbf{RegisterComponent} oraz \textbf{LoginComponent}. Służa one do wpisania kompletu danych kolejno do rejestracji lub logowania i wysłania informacji na serwer. 
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{FirstPage}
+	\caption{Strona logowania i rejestacji}
+	\label{fig:firstpage}
+\end{figure}
+
+\hspace*{0.7cm} Po zalogowaniu otrzymuję interface użytkownika. Po lewej stronie widoczne są wszytkie czaty. Jest to miejsce obsługiwane przez komponent \textbf{ListChatsComponent}. Na środku widać komponent \textbf{ChatComponent} przechowujący wiadomości aktualnie wybranego czatu. Prawy górny róg to komponent \textbf{SearchingUserComboBoxComponent}. Za jego pomocą możemy zaprosić danego użytkowniak do przyjaciół. Prawa strona to komponent \textbf{NotificationComponent} do wyświetlania i obsługiwania powiadomień.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{StronaUżytkownika}
+	\caption{Interfejs użytkownika}
+	\label{fig:stronauzytkownika}
+\end{figure}
+
+\hspace*{0.7cm} Całą obsługa klienta na stronie zaczyna się w klasie \textbf{ControlService}, która przechowuje wszystkie informacje na temat zalogowanego użytkownika. Rozsyła też te dane po wszystkie komponenty za pomocą frameworku \textbf{rxjs}. Słuzy do stworzenia wzorca obserwator na danej zmiennej. Wystarczy wtedy tylko zasubsrykować tą zmienną i można odczytać każdą nową jej wartość podczas nowego przypisania.
+
+\begin{lstlisting}[caption={Obsługa wzorca obserwator po stronie serwisu}]
+
+chats: Subject<Array<Chat>> = new Subject();
+
+public getChats(): Observable<Array<Chat>> {
+	return this.chats;
+}
+
+public setChats(chats: Array<Chat>) {
+	this.chats.next(chats);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Obsługa wzorca obserwator po stronie klienta}]
+
+chats: Array<Chat>;
+
+constructor(private controlService: ControlService) {
+this.controlService.getLogged().subscribe( isLogged => {
+	if (isLogged) {
+			this.controlService.getChats()
+			.subscribe(chats => {
+			this.chats = chats;
+		});
+	}
+});
+\end{lstlisting}
+
+\hspace*{0.7cm} Do wysyłania danych do kontrolerow na serwerze służy serwis \textbf{HttpService}. Jest on podłączony bezpośrednio tylko do ControlSerivce. 
+
+\begin{lstlisting}[caption={Implementacja pobierania wiadmości}]
+
+getLastMessages(lastMessagesController: LastMessagesController): 
+Observable<Array<Message>> {
+
+	if (lastMessagesController.chatId === 0) {
+		return EMPTY;
+	}
+	
+	const headersLivechat = new HttpHeaders({
+		'Authorization': 'Bearer ' + this.token,
+	});
+	
+
+	return this.httpClient.post<Array<Message>>(this.url + 
+	'Messages/getLastTwentyMessages/', lastMessagesController,
+	 {headers: headersLivechat});
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Obsługa otrzymanej z web serwisu odpowiedzi}]
+
+getLastMessages() {
+	let idLastMessage: number;
+	if (this.messages.value == null || 
+	this.messages.value.length === 0) {
+		idLastMessage = 0;
+	} else {
+		idLastMessage = this.messages.value[0].id;
+	}
+	
+	const lastMessageController: LastMessagesController 
+	= {idLastMessage,
+	chatId: this.currentChat.value.id, 
+	requesterId: this.user.value.id};
+	this.httpService.getLastMessages(lastMessageController)
+	.subscribe(messages => {
+		if (this.messages.value != null) {
+			this.messages.value.forEach(message => {
+				messages.push(message);
+				});
+			}
+		this.messages.next(messages);
+	});
+}
+\end{lstlisting}
+
+\hspace*{0.7cm} Obsługa SignalR została zawarta w serwisie \textbf{HubsControllerService}. Jest on odpowiedzialny za uruchomienia połączenia i odczytywania danych. Została tu też zaimplmenetowana obsługą RPC z serwera do podwójnej autoryzacji w \textbf{ConnectionSignalRService}. 
+
+\begin{lstlisting}[caption={Uruchomienie RPC po stronie klienta do podwójnej autoryzacji.}]
+
+this.hubConnection
+	.start()
+	.then(() => this.hubConnection
+	.invoke<boolean>('GetConnectionId', userId)
+	.then(value => {
+		if (!value.valueOf()) {
+			this.isSuccessLogged.next(false);
+		} else {
+			this.isSuccessLogged.next(true);
+		}
+	})
+	.catch(err => {
+		console.log('Error while starting connection: ' + err);
+		this.isSuccessLogged.next(false);
+	}));
+	this.isSuccessLogged.next(false);
+}
+\end{lstlisting}
+
+Za jej pomocą wystarczy odczytać nową wartość zmiennej \textbf{isSuccessLogged}, która dostarczy nam informacji na temat pomyślnego zalogowania. Jeśli wartość jest na true następuję uruchomienia Hub's odpowiedzialnych za nasłuchiwanie nadchodzących wiadmości i powiadomień.
+
+\begin{lstlisting}[caption={Uruchomienie nasłuchiwania Hub's do wiadomości i powiadomień}]
+
+this.connectionSignalRSerivce.getIsSuccessLoggedStatus()
+.subscribe(x => {
+	this.isSuccessLogged.next(x);
+
+	if (x) {
+		this.messageSignalRService
+		.startConnection(this.token);
+		this.messageSignalRService
+		.addTransferChartDataListener();
+
+		this.notificationSignalRService
+		.startConnection(this.token);
+		this.notificationSignalRService
+		.addTransferChartDataListener();
+	}
+});
+\end{lstlisting}
+
+Przychodzące dane są odczytywane w ControlSerwis i rozsyłane też za pomoca wzorca obserwator.
+
 \subsection{Implementacja zarządzania wiadomościami}
-\subsection{Implementacja zarządzania powiadomieniami}
-\subsection{Implementacja zarządzania chatami}
+\hspace*{0.7cm} Obsługę wiadomości zaczyna się od kontrolera \textbf{MessagesController}. Tu są wiadomości wysyłane, a następnie zapisywane w bazie danych oraz odbierane. Do zapisania wiadomości służy metoda \textbf{PostMessage}, która zapisana jest pod adresem \textbf{/Messages/post}. Przyjmuje ona obiekt klasy \textbf{MessageDTO}.
+
+\begin{lstlisting}[caption={Implementacja klasy MessageDTO}]
+
+public class MessageDTO
+{
+	[Required]
+	[MinLength(1, ErrorMessage = "Min 1")]
+	[RegularExpression(@"^[1-9]\d*$",
+	 ErrorMessage = "'0' Can not be used")]
+	public string SenderId { get; set; }
+	
+	[Required]
+	[MinLength(1, ErrorMessage = "Min 1")]
+	[RegularExpression(@"^[1-9]\d*$",
+	 ErrorMessage = "'0' Can not be used")]
+	public string ChatId { get; set; }
+	
+	[Required]
+	[DataType(DataType.DateTime,
+	 ErrorMessage = "Wrong DateTime format")]
+	public string Date { get; set; }
+	
+	[Required]
+	[MinLength(1, ErrorMessage = "Min 1")]
+	public string Content { get; set; }
+}
+\end{lstlisting}
+
+Cała operacja zapisania danych w bazie danych odbywa się w klasie \textbf{MessageRepository}. Tam obiekt EntityFramework jest zdefiniony. \newline
+Przebieg całej operacji polega na tym, że w kontrolerze sprawdzany jest obiekt DTO pod względem jego poprawności, a następnie z repozytorium wyciągany jest obiekt struktury \textbf{MessageContainer}.
+
+\begin{lstlisting}[caption={Implementacja struktury MessageContainer}]
+
+public struct MessageContainer
+{
+	public Chat Chat { get; set; }
+	public User Sender { get; set; }
+	
+	internal void Deconstruct(out Chat chat, out User user)
+	{
+		chat = Chat;
+		user = Sender;
+	}
+}
+\end{lstlisting}
+
+Następuje walidacja połączenia danego czatu z użytkownikiem, który wysłał wiadomość. Metoda z repozytorium zwraca null do obiektów \textit{Chat} i \textit{Sender} w przypadku, jeśli dany użytkowników nie należy do podanego czatu. \newline
+
+\begin{lstlisting}[caption={Walidacje wysyłania wiadomości w kontrolerze}]
+
+if (int.TryParse(message.SenderId, out int senderId) &&
+ int.TryParse(message.ChatId, out int chatid))
+{
+	(chat, user) = await _repository
+	.GetMessageCointainer(senderId, chatid)
+	.ConfigureAwait(true);
+}
+else
+{
+	return BadRequest("SenderId or receiverId has a wrong format.");
+}
+
+if(chat == null || user == null)
+{
+	return BadRequest("Cannot find chat or user.");
+}
+\end{lstlisting}
+
+Po wykonaniu walidacji następuje zapisanie wiadomości w bazie danych. SignalR otrzymuje tą wiadomość i natychmiast wysyła ją do wszystkich odbiorców. \newline
+
+\begin{lstlisting}[caption={Wysłanie wiadomosci za pomocą SignalR}]
+
+var messageChartModel = new MessageChartModel
+{
+	ChatId = chat.Id,
+	SenderName = user.Email,
+	Content = message.Content,
+	Date = messageDate
+};
+
+object[] param = { messageChartModel };
+IEnumerable<int> userIds = chat.ChatMemberships
+.Select(x => x.User.Id);
+
+foreach(int userId in userIds)
+{
+	string connectionId = _service.GetConnectionId(userId);
+	if(connectionId != null && connectionId.Trim().Length != 0)
+	{
+		_ = _hub.Clients.Client(connectionId)
+		.SendAsync("transferchartdata", param)
+		.ConfigureAwait(true);
+	}
+}
+\end{lstlisting}
+
+\hspace*{0.7cm} Kolejną fukcjonalnością jest pobieranie dwudziestu ostatnich wiadomości. Aby to zrobić potrzebujemy informację, która wiadomość aktualnie jest ostatnia. Do metody \textbf{GetLastTwentyMessages} znajdującej się pod ad\textbf{/Messages/getLastTwentyMessages} wysyłany jest obiekt klasy \textbf{GetMessagesDTO}.
+
+\begin{lstlisting}[caption={Implementacja klasy GetMessagesDTO}]
+
+public class GetMessagesDTO
+{
+	public int IdLastMessage { get; set; }
+	
+	public int ChatId { get; set; }
+	
+	public int RequesterId { get; set; }
+}
+\end{lstlisting}
+
+Po sprawdzeniu poprawności obiektu wywoływana jest metoda z repozytorium, która sprawdza relacje użytkownika z podanym czatem, następnie pobiera dwadziesta ostatnich wiadomości zaczynając od zawartej w powyższej klasie. Jeśli zmienna \textbf{IdLastMessage} jest równa 0, pobierane jest dwadzieścia najnowszych wiadomości w danym czacie.
+
+\begin{lstlisting}[caption={Implementacja pobierania ostatnich 20 wiadomości}]
+
+int iterator = 0;
+var messageWithCorrectedId = messagesToProccess.Where(x => x.Id <= getMessages.IdLastMessage).ToList();
+
+for(int i = messageWithCorrectedId.Count - 1; i >= 0; i--)
+{
+	if(messageWithCorrectedId[i] == null)
+	{
+		break;
+	}
+
+	messages.Add(messageWithCorrectedId[i]);
+
+	iterator++;
+
+	if (iterator >= 20)
+	{
+		break;
+	}
+}
+
+return messages.Reverse();
+\end{lstlisting}
+
+I ostatecznie kontroler zwraca tablicę wiadomości.
+
+\subsection{Implementacja zarządzania powiadomieniami} 
+\hspace*{0.7cm} Powiadomienia to najbardziej rozbudowana część całej aplikacji. Jest to wieloetapowy proces, który zawiera specyficzną kolejność. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{PowiadomieniaUser}
+	\caption{Proces powiadomień w relacjach użytkowników}
+	\label{fig:powiadomieniauser}
+\end{figure}
+
+Kiedy \textit{UserA} zaprasza \textit{UseraB} do przyjaciół, na serwer wysyłane jest powiadomienie o zaproszeniu, który zpreparowane powiadomienie wysyła do danego użytkownika. Przyjmowany jest obiekt klasy \textbf{InvitatationDTO} w metodzie \textbf{AddRelation}, znajdującej się pod adresem \textbf{/Notification/invitation}, który w kontrolerze jest walidowany i wysyłany do repozytorium powiadomień w celu jego przeprocesowania i zapisania wyniku na bazie danych.
+
+\begin{lstlisting}[caption={Implementacja klasy InvitatationDTO}]
+
+public class InvitatationDTO
+{
+	[Required]
+	[RegularExpression(@"^[1-9]\d*$", 
+	ErrorMessage = "'0' Can not be used")]
+	public string UserId { get; set; }
+	
+	[Required]
+	[RegularExpression(@"^[1-9]\d*$",
+	 ErrorMessage = "'0' Can not be used")]
+	public string OtherId { get; set; }
+	
+	public string ChatId { get; set; }
+}
+
+\end{lstlisting}
+
+Ten użytkownik, moze przyjąć zaproszenie lub nie. Wysyła swoją decyzję za pomocą kolejnego powiadomienia do metody \textbf{ProcessNotification} znajdującej się pod adresem \textbf{Notification/proccess}. Przyjmuje ona obiekt klasy \textbf{NotificationDTO}.
+
+\begin{lstlisting}[caption={Implementacja klasy NotificationDTO}]
+
+public class NotificationDTO
+{
+	[Required]
+	[RegularExpression(@"^[1-9]\d*$", 
+	ErrorMessage = "'0' Can not be used")]
+	public string Id { get; set; }
+	
+	[Required]
+	public bool Action { get; set; }
+	
+	[Required]
+	public string UserId { get; set; }
+}
+\end{lstlisting}
+
+Informacje zwrotna jako odpowiedz z rezultatem jest wysyłana do \textit{UserA}. W dalszej części w razie przyjecia następuje stworzenie relacji między użytkownikami i odpowiedniego czatu oraz członkostwa do tego czatu.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{ProcesTworzeniaNowejRelacji}
+	\caption{Proces tworzenia nowej relacji}
+	\label{fig:procestworzenianowejrelacji}
+\end{figure}
+
+Relacja to tabela, która jest pomostem w relacji wiele do wielu. Jest zdefiniowany tam id danego użytkownika i id jego przyjaciela. W kostce Członkostwo czatu zawarta jest tablea ChatMemberships, która również jest pomostem w relacji wiele do wielu, czyli w relacji między tabelą Users, a Chats.
+\newline
+Te wpisy na bazie danych są tworzene w klasie pomocniczej \textbf{NotificationProcess}, która tworzy się i uruchamia w repozytorium powiadomień w metodzie \textbf{Process} przyjmującej id powiadomienia, akcje związane z akceptacja lub odrzuceniem powiadomiania oraz id uzytkownika, który przyjął powiadomienie. Informacja zwrotna jest natuchmiast wysyłana do wszystkich użytkowników, który interesuje dane powiadomienie za pomocą SignalR.
+
+\begin{lstlisting}[caption={Implementacja procesowania powiadomienia}]
+
+NotificationProcess process = new NotificationProcess
+(_chatRepository, notification, isNotificationAccepted);
+
+await process.Process().ConfigureAwait(true);
+
+_context.Notifications.Remove(notification);
+
+if(process.InformationNotification != null)
+{
+	await _context.Notifications
+	.AddAsync(process.InformationNotification)
+	.ConfigureAwait(true);
+}
+
+await _context.SaveChangesAsync().ConfigureAwait(true);
+
+if (process.InformationNotification != null)
+{
+	await SendData(process.InformationNotification)
+	.ConfigureAwait(true);
+} 
+\end{lstlisting}
+
+Wysyłanie powiadomień do użytkowników za pomocą SignalR zostało zaimplementowane w metodzie \textbf{SendeData} w repozytorium powiadomień, do którego trafia \textbf{Notification}.
+
+\begin{lstlisting}[caption={Implementacja wysyłania powiadomień do użytkownika za pomocą SignalR}]
+
+private async Task SendData(Notification notification)
+{
+	if(notification != null)
+	{
+		object[] param = { new NotificationChartModel
+		{
+			Id = notification.Id,
+			SenderEmail = notification.Sender.Email,
+			ReceiverId = notification.ReceiverId,
+			Type = notification.Type,
+			Desc = notification.Desc,
+			ExtraData = notification.ExtraData,
+			Date = notification.Date
+		} };
+	
+		var connectionId = _serivce.
+		GetConnectionId(notification.ReceiverId);
+		if(connectionId != null)
+		{
+			_ = _hub.Clients.Client(connectionId)
+			.SendAsync("transfernotifications", param)
+			.ConfigureAwait(true);
+		}
+	}
+}
+\end{lstlisting}
+
+Każdy użytkownik może usunąć danego w każdej chwili. Służy do tego metoda \textbf{DeleteRelation} osadzona pod linkiem \textbf{Notificaiton/deleteRelation}, która przyjmuje obiekt klasy \textbf{RelationDeletionDTO}.
+
+\begin{lstlisting}[caption={Implementacja klasy RelationDeletionDTO}]
+
+public class RelationDeletionDTO
+{
+	[Required]
+	public string SenderId { get; set; }
+	
+	[Required]
+	public string ChatId { get; set; }
+	
+	public string Reason { get; set; }
+	
+	public string MemberId { get; set; }
+}
+\end{lstlisting}
+
+Po sprawdzeniu walidacji w kontrolerze, proces przechodzi do repozytorium notifikacji, a dokładniej do metody \textbf{DeleteMembership}, w której odbywa się usuwanie relacji oraz członkostwa czatu. Co ważne, sam czat nie jest usuwany. Stosowane powiadomienie zwrotne jest wysyłane do użytkownika jako odpowiedz.
+
+\begin{lstlisting}[caption={Implementacja usuwania relacji}]
+
+var relations = _context.Friends.Where(x => (x.UserId.Equals(idEjected) && x.FriendId.Equals(idMembers[0]) || (x.UserId.Equals(idMembers[0]) && x.FriendId.Equals(idEjected)))).ToArray();
+
+if (relations == null)
+{
+	return false;
+}
+
+_context.Friends.RemoveRange(relations);
+
+var chatMemberships = _context.ChatMemberships.Where(x => x.ChatId == container.ChatId);
+_context.ChatMemberships.RemoveRange(chatMemberships);
+\end{lstlisting}
+
+Cały proces powiadomień został dostosowany do grup w ten sposób, że dodawanie użytkownika odbywa się w tej samej metodzie co dodawanie przyjaciela. Tak samo w przypadku usuwania kogos z grupy, co może zrobić tylko właściciel danego czatu.
+
+\subsection{Implementacja zarządzania chatami} 
+\hspace*{0.7cm} Czaty w naszej aplikacji to jedne z najważniejszych modeli. Posiadają informację na temat wszystkich członków oraz wiadomości. Większość fukcjonalności związanych z czatami jest obsługiwana w kontrolerze powiadomień. W kontrolerze czatu podstawową metodą jest stworzenie czatu grupowego za pomocą \textbf{CreateGroupChat}, znajdujacego się pod adresem \textbf{Chats/createGroupChat}, który przyjmuje obiekt klasy \textbf{GroupChatDTO}.
+
+\begin{lstlisting}[caption={Implementacja klasy GroupChatDTO}]
+
+public class GroupChatDTO
+{
+	public string OwnerId { get; set; }
+	public string Name { get; set; }
+}
+\end{lstlisting}
+
+W kontrolerze walidowana jest spójność i poprawność danych, a proces tworzenia czatu przeprowadzany jest w repozytorium czatu. Każdy czat może posiadać wielu użytkowników oraz wiele wiadomości. Została zachowana abstrakcja i czat przyjacielski nie rożni się budową niczym od czatu grupowego, przez sama implementacja przebiegła w prostszy sposób.
+
 \subsection{Obsługa SignalR}
+\hspace*{0.7cm} SignalR został do prawidłowego działania potrzebuje deklacji adresu w klasie \textbf{Startup} w metodzie \textbf{Configure}.
+
+\begin{lstlisting}[caption={Konfiguracja SignalR}]
+
+app.UseEndpoints(endpoints =>
+{
+	endpoints.MapControllers();
+	endpoints.MapHub<MessagesHub>("/messagechart");
+	endpoints.MapHub<NotificationHub>("/notificationchart");
+	endpoints.MapHub<GateHub>("/connection");
+});
+\end{lstlisting}
+
+W apliakcji zostały użyte trzy Hub's.\newline
+Pierwszy z nich to \textbf{GateHub}, który posiada metodę \textbf{GetConnectionId}. Służy on do autoryzacji połączenia. Użytkownik musi wysłać swoje id oraz token, w którym znajduję się email. Jeśli dany id jest zgodny z tokenem następuje pomyślne zalogowanie. Taka aktywność zapisywana jest w tabeli \textbf{UsersTrace}. Ta metoda jest wywoływana zdalnie z poziomu klienta.
+
+\begin{lstlisting}[caption={Implementacja metody GetConnectionId z klasy GateHub}]
+
+public async Task<bool> GetConnectionId(int userId)
+{
+	var user = await _context.Users
+	.FirstOrDefaultAsync(x => x.Id == userId)
+	.ConfigureAwait(true);
+	
+	var requesterMail = Context.User.Identity.Name;
+	var ipAddress = Context.Features.Get<IHttpConnectionFeature>()
+	?.ConnectionId;
+	bool isSuccessLogged;
+	
+	if (requesterMail.Equals
+	(requesterMail, System.StringComparison.CurrentCulture))
+	{
+		isSuccessLogged = true;
+	}
+	else
+	{
+		isSuccessLogged = false;
+	}
+	
+	await _context.UsersTrace.AddAsync(new Models.UserTrace
+	{
+		Who = requesterMail,
+		UserIdProvided = userId,
+		When = DateTime.Now,
+		Result = isSuccessLogged,
+		IpAddress = ipAddress
+	});
+
+	await _context.SaveChangesAsync().ConfigureAwait(true);
+	
+	return isSuccessLogged;
+}
+\end{lstlisting}
+
+Kolejnymi Hub tego samego typu są \textbf{MessageHub} oraz \textbf{NotificationHub}. Dziedziczą one po \textbf{BaseHub}. Różnicą jest definiowane serwisu odpowiedzialnego za połączenia.
+
+\begin{lstlisting}[caption={Implementacja klasy MessageHub}]
+
+public class MessagesHub : BaseHub
+{
+	protected override ServiceTypes Type => 
+	ServiceTypes.MessageConnectionService;
+	
+	public MessagesHub(Func<ServiceTypes,
+	 IConnectionService> servicesResolver) : base(servicesResolver)
+	{
+	
+	}
+}
+
+\end{lstlisting}
+
+Klasy \textbf{MessageConnectionService} oraz \textbf{NotificationConnectionService} wspólnie dziedziczą po \textbf{ConnectionService}. Nie mają żadnych różnic, a zostały zaimplementowane w sposób osobny w celu wskrzynięcia osobnej klasy, z osobymi danymi do odpodniego Hub'a. Tak w tym przypadku MessagesHub posiada MessageConnectionService. W klasie Startup w metodzie ConfigureServices takie działanie na wstrzykiwaniu serwisów tego samego typu odbywa się za pomocą Delegatu Func.
+
+\begin{lstlisting}[caption={Implementacja DI na dwóch klasach tego samego typu}]
+
+services.AddSingleton<Func<ServiceTypes, 
+IConnectionService>>(provider => serviceType =>
+{
+	switch(serviceType)
+	{
+		case ServiceTypes.MessageConnectionService:
+			return provider.
+			GetService<MessageConnectionService>();
+		case ServiceTypes.NotificationConnectionService:
+			return provider
+			.GetService<NotificationConnectionService>();
+		default:
+			return null;
+	}
+});
+
+\end{lstlisting}
+
+Klasa ConnectionService przypisuje connectionId do id danego użytkownika.
+
+\begin{lstlisting}[caption={Dodanie wpisu do słownika na temat id połączenia i użytkownika}]
+
+public void AddConnection(string connectionId, int userId)
+{
+	_connections.Add(new ConnectionContainer
+	{
+		ConnectionId = connectionId,
+		UserId = userId
+	});
+}
+
+\end{lstlisting}
+
+Wywoływane jest to w klasie BaseHub podczas nawiązania połączenia.
+
+\begin{lstlisting}[caption={Dodanie wpisu do słownika na temat id połączenia i użytkownika}]
+
+public override Task OnConnectedAsync()
+{
+	if(int.TryParse(Context.UserIdentifier, out int userId))
+	{
+		_connectionService
+		.AddConnection(Context.ConnectionId, userId);
+	
+		return base.OnConnectedAsync();
+	}
+	
+	throw new Microsoft.AspNetCore.SignalR.HubException("Cannot parse user id");
+}
+
+\end{lstlisting}
+
+Taki mechanizm pozwala wysłać wiadomość do konkretnych użytkowników. Wystarczy podać id użytkownika, do którego chcemy wysłać wiadomość, a serwis za pomocą metody \textbf{GetConnectionId} zwróci id połączenia.
+
+\begin{lstlisting}[caption={Przykład wysyłania wiadomości do danego użytkownika.}]
+
+string connectionId = _service.GetConnectionId(userId);
+if(connectionId != null && connectionId.Trim().Length != 0)
+{
+	_ = _hub.Clients.Client(connectionId)
+	.SendAsync("transferchartdata", param)
+	.ConfigureAwait(true);
+}
+
+\end{lstlisting}
 
 \section{Podsumowanie}
 

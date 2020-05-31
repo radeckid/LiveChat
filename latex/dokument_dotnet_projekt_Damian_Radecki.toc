@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Wprowadzenie}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Aplikacje czasu rzeczywistego}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Opis działania}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}Opis działania}{3}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Grupa docelowa}{3}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Użyte technologie}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}.Net Core}{3}{subsection.2.1}%
@@ -19,22 +19,22 @@
 \contentsline {subsection}{\numberline {4.1}Modele bazy danych}{11}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Modele DTO}{12}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Implementacja kontrolerów}{13}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Problemy i ich rozwiązania}{13}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Testy}{13}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Testy jednostkowe}{13}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Testy integracyjne}{13}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Opis wkładu własnego w realizację projektu}{13}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Stworzenie i konfiguracja bazy danych}{13}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Stworzenie systemu logowania i rejestracji}{14}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Autoryzacja i autentykacja użytkowników}{15}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Konfiguracja środowiska i serwera}{15}{subsection.6.4}%
-\contentsline {subsubsection}{\numberline {6.4.1}ConfigureServices}{16}{subsubsection.6.4.1}%
-\contentsline {subsubsection}{\numberline {6.4.2}Configure}{18}{subsubsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.5}Strona internetowa opracowana w Angular}{19}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Implementacja zarządzania wiadomościami}{19}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Implementacja zarządzania powiadomieniami}{19}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Implementacja zarządzania chatami}{19}{subsection.6.8}%
-\contentsline {subsection}{\numberline {6.9}Obsługa SignalR}{19}{subsection.6.9}%
-\contentsline {section}{\numberline {7}Podsumowanie}{19}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Wnioski}{19}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Do zrealizowania przy dalszym rozwoju}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {4.4}Implementacja SignalR}{17}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Testy}{19}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Testy jednostkowe}{19}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Testy integracyjne}{19}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Opis wkładu własnego w realizację projektu}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Stworzenie i konfiguracja bazy danych}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Stworzenie systemu logowania i rejestracji}{20}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Autoryzacja i autentykacja użytkowników}{21}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Konfiguracja środowiska i serwera}{21}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}ConfigureServices}{21}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Configure}{24}{subsubsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.5}Strona internetowa opracowana w Angular}{24}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Implementacja zarządzania wiadomościami}{28}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Implementacja zarządzania powiadomieniami}{31}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Implementacja zarządzania chatami}{36}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Obsługa SignalR}{37}{subsection.6.9}%
+\contentsline {section}{\numberline {7}Podsumowanie}{40}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Wnioski}{40}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Do zrealizowania przy dalszym rozwoju}{40}{subsection.7.2}%
